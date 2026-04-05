@@ -16,15 +16,41 @@
         .hidden { display: none !important; }
 
         /* 封面页 */
-        .cover-page { text-align: center; padding-top: 80px; min-height: 100vh; }
-        .cover-badge { display: inline-block; background: linear-gradient(135deg, #667eea, #764ba2); padding: 8px 20px; border-radius: 30px; font-size: 14px; margin-bottom: 30px; }
-        .cover-icon { font-size: 80px; margin-bottom: 20px; }
-        .cover-title { font-size: 28px; font-weight: bold; margin-bottom: 12px; }
-        .cover-subtitle { font-size: 15px; color: rgba(255,255,255,0.7); margin-bottom: 40px; line-height: 1.8; padding: 0 20px; }
-        .cover-stats { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; }
+        .cover-page { text-align: center; padding-top: 40px; min-height: 100vh; }
+        .cover-badge { display: inline-block; background: linear-gradient(135deg, #ffd700, #ff6b6b); padding: 6px 16px; border-radius: 20px; font-size: 12px; margin-bottom: 20px; color: #1a1a2e; font-weight: bold; }
+        .cover-icon { font-size: 70px; margin-bottom: 15px; }
+        .cover-title { font-size: 32px; font-weight: bold; margin-bottom: 8px; background: linear-gradient(120deg, #fff 0%, #ffd700 50%, #f093fb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .cover-subtitle { font-size: 16px; color: rgba(255,255,255,0.8); margin-bottom: 20px; line-height: 1.6; }
+        .cover-tagline { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 25px; }
+        
+        /* 能量标签 */
+        .energy-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 25px; }
+        .energy-tag { padding: 6px 12px; border-radius: 15px; font-size: 12px; opacity: 0.9; }
+        .tag-rest { background: rgba(79, 172, 254, 0.3); border: 1px solid rgba(79, 172, 254, 0.5); }
+        .tag-growth { background: rgba(247, 151, 30, 0.3); border: 1px solid rgba(247, 151, 30, 0.5); }
+        .tag-break { background: rgba(250, 112, 154, 0.3); border: 1px solid rgba(250, 112, 154, 0.5); }
+        .tag-deep { background: rgba(106, 17, 203, 0.3); border: 1px solid rgba(106, 17, 203, 0.5); }
+        .tag-show { background: rgba(247, 112, 98, 0.3); border: 1px solid rgba(247, 112, 98, 0.5); }
+        .tag-focus { background: rgba(100, 100, 100, 0.3); border: 1px solid rgba(100, 100, 100, 0.5); }
+        .tag-adapt { background: rgba(100, 200, 150, 0.3); border: 1px solid rgba(100, 200, 150, 0.5); }
+        .tag-lead { background: rgba(255, 215, 0, 0.3); border: 1px solid rgba(255, 215, 0, 0.5); }
+        
+        /* 痛点问题 */
+        .pain-points { background: rgba(255,255,255,0.05); border-radius: 16px; padding: 18px; margin: 0 10px 25px; text-align: left; }
+        .pain-title { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+        .pain-item { display: flex; align-items: center; gap: 10px; font-size: 14px; margin-bottom: 10px; color: rgba(255,255,255,0.85); }
+        .pain-item:last-child { margin-bottom: 0; }
+        .pain-icon { font-size: 16px; }
+        .pain-text { flex: 1; }
+        
+        /* 社交证明 */
+        .social-proof { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+        .social-proof span { color: #ffd700; }
+        
+        .cover-stats { display: flex; justify-content: center; gap: 25px; margin-bottom: 30px; }
         .stat-item { text-align: center; }
-        .stat-num { font-size: 24px; font-weight: bold; color: #ffd700; }
-        .stat-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+        .stat-num { font-size: 22px; font-weight: bold; color: #ffd700; }
+        .stat-label { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px; }
         .start-btn {
             background: linear-gradient(135deg, #f093fb, #f5576c);
             border: none;
@@ -174,10 +200,35 @@
 
 <!-- 封面页 -->
 <div id="coverPage" class="container cover-page">
-    <div class="cover-badge">🔥 AI智能选题</div>
+    <div class="cover-badge">🔥 朋友圈都在测</div>
     <div class="cover-icon">🔮</div>
-    <h1 class="cover-title">八门识人能量测试</h1>
-    <p class="cover-subtitle">智能自适应测试，精准锁定能量属性<br>题目因人而异，结果千人千面</p>
+    <h1 class="cover-title">你的能量命格是什么？</h1>
+    <p class="cover-subtitle">56种能量组合，你是哪一种？</p>
+    <p class="cover-tagline">AI智能选题 · 精准匹配你的专属命格</p>
+    
+    <!-- 能量标签 -->
+    <div class="energy-tags">
+        <span class="energy-tag tag-rest">🌊 情商调和</span>
+        <span class="energy-tag tag-growth">💰 财富创造</span>
+        <span class="energy-tag tag-break">⚡ 突破进取</span>
+        <span class="energy-tag tag-deep">🧠 内敛深藏</span>
+        <span class="energy-tag tag-show">✨ 展示表达</span>
+        <span class="energy-tag tag-focus">🎯 执着坚持</span>
+        <span class="energy-tag tag-adapt">🔄 变通灵活</span>
+        <span class="energy-tag tag-lead">🚀 开拓领袖</span>
+    </div>
+    
+    <!-- 痛点问题 -->
+    <div class="pain-points">
+        <div class="pain-title">测一测，找到你的答案：</div>
+        <div class="pain-item"><span class="pain-icon">💼</span><span class="pain-text">天生适合做什么工作？</span></div>
+        <div class="pain-item"><span class="pain-icon">💰</span><span class="pain-text">财富能量从哪来？</span></div>
+        <div class="pain-item"><span class="pain-icon">💕</span><span class="pain-text">和谁最合拍？</span></div>
+    </div>
+    
+    <!-- 社交证明 -->
+    <div class="social-proof"><span>🔥 3万+</span> 人在测 · 准到离谱</div>
+    
     <div class="cover-stats">
         <div class="stat-item"><div class="stat-num">20</div><div class="stat-label">道情景题</div></div>
         <div class="stat-item"><div class="stat-num">56</div><div class="stat-label">种能量组合</div></div>
