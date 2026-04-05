@@ -47,6 +47,103 @@
         .social-proof { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
         .social-proof span { color: #ffd700; }
         
+        /* 出生日期输入区 - 紧凑版 */
+        .birth-section {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,215,0,0.2);
+            border-radius: 12px;
+            padding: 15px 12px;
+            margin: 0 5px 15px;
+        }
+        .birth-title {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .birth-inputs {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            align-items: flex-end;
+            flex-wrap: nowrap;
+        }
+        .birth-input-group {
+            text-align: center;
+        }
+        .birth-input-group label {
+            font-size: 10px;
+            color: rgba(255,255,255,0.4);
+            display: block;
+            margin-bottom: 4px;
+        }
+        .birth-input {
+            width: 55px;
+            padding: 8px 4px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,215,0,0.3);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 15px;
+            text-align: center;
+            font-family: 'Georgia', serif;
+            letter-spacing: 1px;
+        }
+        .birth-input:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(255,215,0,0.3);
+        }
+        .birth-input::placeholder {
+            color: rgba(255,255,255,0.3);
+            font-size: 12px;
+        }
+        .birth-separator {
+            font-size: 18px;
+            color: rgba(255,215,0,0.5);
+            align-self: center;
+            margin-bottom: 12px;
+        }
+        /* 时辰选择器 */
+        .birth-select {
+            width: 58px;
+            padding: 8px 4px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,215,0,0.3);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+            font-family: 'Georgia', serif;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,215,0,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 4px center;
+            background-size: 12px;
+            padding-right: 20px;
+        }
+        .birth-select:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(255,215,0,0.3);
+        }
+        .birth-select option {
+            background: #1a1a2e;
+            color: #fff;
+            font-family: 'Georgia', serif;
+        }
+        .birth-hint {
+            font-size: 10px;
+            color: rgba(255,255,255,0.35);
+            margin-top: 10px;
+            text-align: center;
+        }
+        
         .cover-stats { display: flex; justify-content: center; gap: 25px; margin-bottom: 30px; }
         .stat-item { text-align: center; }
         .stat-num { font-size: 22px; font-weight: bold; color: #ffd700; }
@@ -60,8 +157,34 @@
             border-radius: 50px;
             cursor: pointer;
             box-shadow: 0 10px 30px rgba(245,87,108,0.4);
+            transition: all 0.3s;
+        }
+        .start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(245,87,108,0.5);
+        }
+        .start-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
         }
         .cover-tip { margin-top: 20px; font-size: 13px; color: rgba(255,255,255,0.4); }
+        
+        /* 输入校验提示 */
+        .input-error {
+            border-color: #ff6b6b !important;
+            animation: shake 0.3s;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .input-success {
+            border-color: #4ade80 !important;
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+        }
 
         /* 进度条 */
         .progress-bar { position: fixed; top: 0; left: 0; width: 100%; height: 4px; background: rgba(255,255,255,0.1); z-index: 100; }
@@ -111,6 +234,8 @@
         /* 结果页 */
         .result-page { padding-bottom: 40px; }
         .result-header { text-align: center; padding: 30px 0 20px; }
+        .result-birth { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 8px; letter-spacing: 2px; }
+        .result-hour { font-size: 12px; color: rgba(255,215,0,0.6); margin-bottom: 12px; }
         .result-badge { display: inline-block; background: linear-gradient(135deg, #f093fb, #f5576c); padding: 6px 16px; border-radius: 20px; font-size: 12px; margin-bottom: 12px; }
         .result-type { font-size: 32px; font-weight: bold; margin-bottom: 8px; color: #ffd700; }
         .result-subtitle { font-size: 15px; color: rgba(255,255,255,0.6); }
@@ -200,11 +325,11 @@
 
 <!-- 封面页 -->
 <div id="coverPage" class="container cover-page">
-    <div class="cover-badge">🔥 朋友圈都在测</div>
+    <div class="cover-badge">🔥 3万+人在测 · 准到离谱</div>
     <div class="cover-icon">🔮</div>
     <h1 class="cover-title">你的能量命格是什么？</h1>
     <p class="cover-subtitle">56种能量组合，你是哪一种？</p>
-    <p class="cover-tagline">AI智能选题 · 精准匹配你的专属命格</p>
+    <p class="cover-tagline">易学智慧 · 精准解读你的能量命格</p>
     
     <!-- 能量标签 -->
     <div class="energy-tags">
@@ -226,16 +351,57 @@
         <div class="pain-item"><span class="pain-icon">💕</span><span class="pain-text">和谁最合拍？</span></div>
     </div>
     
+    <!-- 出生日期输入区 -->
+    <div class="birth-section">
+        <div class="birth-title">📜 请输入你的生辰信息</div>
+        <div class="birth-inputs">
+            <div class="birth-input-group">
+                <label>年</label>
+                <input type="text" class="birth-input" id="birthYear" maxlength="4" placeholder="YYYY" oninput="validateYear(this)">
+            </div>
+            <span class="birth-separator">/</span>
+            <div class="birth-input-group">
+                <label>月</label>
+                <input type="text" class="birth-input" id="birthMonth" maxlength="2" placeholder="MM" oninput="validateMonth(this)">
+            </div>
+            <span class="birth-separator">/</span>
+            <div class="birth-input-group">
+                <label>日</label>
+                <input type="text" class="birth-input" id="birthDay" maxlength="2" placeholder="DD" oninput="validateDay(this)">
+            </div>
+            <span class="birth-separator">/</span>
+            <div class="birth-input-group">
+                <label>时辰</label>
+                <select class="birth-select" id="birthHour" onchange="validateHour(this)">
+                    <option value="">请选</option>
+                    <option value="子">子时</option>
+                    <option value="丑">丑时</option>
+                    <option value="寅">寅时</option>
+                    <option value="卯">卯时</option>
+                    <option value="辰">辰时</option>
+                    <option value="巳">巳时</option>
+                    <option value="午">午时</option>
+                    <option value="未">未时</option>
+                    <option value="申">申时</option>
+                    <option value="酉">酉时</option>
+                    <option value="戌">戌时</option>
+                    <option value="亥">亥时</option>
+                </select>
+            </div>
+        </div>
+        <div class="birth-hint">🕐 生辰信息仅用于能量解读分析，绝不泄露</div>
+    </div>
+    
     <!-- 社交证明 -->
-    <div class="social-proof"><span>🔥 3万+</span> 人在测 · 准到离谱</div>
+    <div class="social-proof"><span id="liveCount">🔥</span> <span id="liveText">正在测试中...</span></div>
     
     <div class="cover-stats">
         <div class="stat-item"><div class="stat-num">20</div><div class="stat-label">道情景题</div></div>
         <div class="stat-item"><div class="stat-num">56</div><div class="stat-label">种能量组合</div></div>
         <div class="stat-item"><div class="stat-num">免费</div><div class="stat-label">完全免费</div></div>
     </div>
-    <button class="start-btn" id="startBtn">开始测试 →</button>
-    <p class="cover-tip">匿名测试 · 不收集任何信息</p>
+    <button class="start-btn" id="startBtn">✨ 开启能量解读 ✨</button>
+    <p class="cover-tip">🌟 易学智慧解读 · 结果仅自己可见</p>
 </div>
 
 <!-- 测试页 -->
@@ -251,6 +417,8 @@
 <!-- 结果页 -->
 <div id="resultPage" class="container result-page hidden">
     <div class="result-header">
+        <div id="resultBirth" class="result-birth"></div>
+        <div id="resultHour" class="result-hour"></div>
         <div class="result-badge">✨ 你的专属能量报告</div>
         <h2 id="resultType" class="result-type"></h2>
         <p id="resultSubtitle" class="result-subtitle"></p>
@@ -511,9 +679,114 @@ var energyData = {
 // 全局变量
 var currentQ = 0;
 var scores = {"休门":0,"生门":0,"伤门":0,"杜门":0,"景门":0,"死门":0,"惊门":0,"开门":0};
+var birthInfo = {};
+
+// 动态在线人数
+function updateLiveCount() {
+    var baseNum = 128;
+    var randomOffset = Math.floor(Math.random() * 50);
+    var count = baseNum + randomOffset;
+    document.getElementById("liveCount").textContent = "🔥 当前" + count + "人";
+}
+updateLiveCount();
+setInterval(updateLiveCount, 5000); // 每5秒更新一次
+
+// 出生日期输入验证
+function validateYear(input) {
+    input.value = input.value.replace(/\D/g, '');
+    if (input.value.length === 4) {
+        var year = parseInt(input.value);
+        if (year >= 1900 && year <= new Date().getFullYear()) {
+            input.classList.remove('input-error');
+            input.classList.add('input-success');
+        } else {
+            input.classList.remove('input-success');
+            input.classList.add('input-error');
+        }
+    } else {
+        input.classList.remove('input-error', 'input-success');
+    }
+}
+
+function validateMonth(input) {
+    input.value = input.value.replace(/\D/g, '');
+    if (input.value.length === 2) {
+        var month = parseInt(input.value);
+        if (month >= 1 && month <= 12) {
+            input.classList.remove('input-error');
+            input.classList.add('input-success');
+        } else {
+            input.classList.remove('input-success');
+            input.classList.add('input-error');
+        }
+    } else {
+        input.classList.remove('input-error', 'input-success');
+    }
+}
+
+function validateDay(input) {
+    input.value = input.value.replace(/\D/g, '');
+    if (input.value.length === 2) {
+        var day = parseInt(input.value);
+        if (day >= 1 && day <= 31) {
+            input.classList.remove('input-error');
+            input.classList.add('input-success');
+        } else {
+            input.classList.remove('input-success');
+            input.classList.add('input-error');
+        }
+    } else {
+        input.classList.remove('input-error', 'input-success');
+    }
+}
+
+function validateHour(select) {
+    if (select.value) {
+        select.classList.remove('input-error');
+        select.classList.add('input-success');
+    } else {
+        select.classList.remove('input-success');
+    }
+}
+
+// 检查是否填写了日期
+function checkBirthInfo() {
+    var year = document.getElementById("birthYear").value;
+    var month = document.getElementById("birthMonth").value;
+    var day = document.getElementById("birthDay").value;
+    var hour = document.getElementById("birthHour").value;
+    return year.length === 4 && month.length === 2 && day.length === 2 && hour !== "";
+}
 
 // 开始测试
 document.getElementById("startBtn").onclick = function() {
+    if (!checkBirthInfo()) {
+        // 轻轻抖动输入框提示
+        var inputs = document.querySelectorAll('.birth-input');
+        inputs.forEach(function(input) {
+            if (!input.value || input.value.length < (input.id === "birthYear" ? 4 : 2)) {
+                input.classList.add('input-error');
+                setTimeout(function() { input.classList.remove('input-error'); }, 500);
+            }
+        });
+        // 检查时辰
+        var hourSelect = document.getElementById("birthHour");
+        if (!hourSelect.value) {
+            hourSelect.classList.add('input-error');
+            setTimeout(function() { hourSelect.classList.remove('input-error'); }, 500);
+        }
+        alert("请完整填写生辰信息，开启你的能量之旅 ✨");
+        return;
+    }
+    
+    // 保存出生信息
+    birthInfo = {
+        year: document.getElementById("birthYear").value,
+        month: document.getElementById("birthMonth").value,
+        day: document.getElementById("birthDay").value,
+        hour: document.getElementById("birthHour").value
+    };
+    
     document.getElementById("coverPage").classList.add("hidden");
     document.getElementById("testPage").classList.remove("hidden");
     showQuestion(0);
@@ -572,6 +845,15 @@ function showResult() {
     document.getElementById("resultPage").classList.remove("hidden");
     document.getElementById("progressFill").style.width = "100%";
     window.scrollTo(0, 0);
+    
+    // 显示出生日期
+    if (birthInfo.year) {
+        document.getElementById("resultBirth").textContent = birthInfo.year + "." + birthInfo.month + "." + birthInfo.day;
+    }
+    // 显示时辰
+    if (birthInfo.hour) {
+        document.getElementById("resultHour").textContent = "【" + birthInfo.hour + "时】";
+    }
     
     // 找出最高分
     var maxScore = 0;
@@ -746,6 +1028,15 @@ document.getElementById("unlockBtn").onclick = function() {
 document.getElementById("retryBtn").onclick = function() {
     currentQ = 0;
     scores = {"休门":0,"生门":0,"伤门":0,"杜门":0,"景门":0,"死门":0,"惊门":0,"开门":0};
+    birthInfo = {};
+    document.getElementById("birthYear").value = "";
+    document.getElementById("birthMonth").value = "";
+    document.getElementById("birthDay").value = "";
+    document.getElementById("birthHour").value = "";
+    document.querySelectorAll('.birth-input').forEach(function(input) {
+        input.classList.remove('input-success', 'input-error');
+    });
+    document.getElementById("birthHour").classList.remove('input-success', 'input-error');
     document.getElementById("resultPage").classList.add("hidden");
     document.getElementById("coverPage").classList.remove("hidden");
     document.getElementById("progressFill").style.width = "0%";
