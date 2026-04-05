@@ -1781,6 +1781,160 @@ function render() {
 
 // 初始化
 document.addEventListener('DOMContentLoaded', render);
+
+// ============================================
+// 访问验证系统
+// ============================================
+(function() {
+    // 正确的访问码（可自定义）
+    const VALID_CODE = 'DING2026';
+    
+    // 获取URL参数
+    const urlParams = new URLSearchParams(window.location.search);
+    const codeFromUrl = urlParams.get('code');
+    
+    // 检查是否已验证过
+    const isVerified = sessionStorage.getItem('report_verified') === 'true';
+    
+    // 验证状态
+    let verified = false;
+    
+    // 如果URL有正确code，或sessionStorage有记录，则验证通过
+    if (codeFromUrl === VALID_CODE || isVerified) {
+        verified = true;
+        sessionStorage.setItem('report_verified', 'true');
+    }
+    
+    // 如果未验证，显示验证弹窗
+    if (!verified) {
+        document.body.innerHTML = `
+        <style>
+            .verify-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+            }
+            .verify-box {
+                background: white;
+                border-radius: 20px;
+                padding: 48px 40px;
+                text-align: center;
+                max-width: 400px;
+                width: 90%;
+            }
+            .verify-icon {
+                width: 80px;
+                height: 80px;
+                background: linear-gradient(135deg, #e94560, #ff6b6b);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 24px;
+                font-size: 36px;
+            }
+            .verify-title {
+                font-size: 24px;
+                font-weight: 700;
+                color: #1a1a2e;
+                margin-bottom: 12px;
+            }
+            .verify-desc {
+                font-size: 14px;
+                color: #6c757d;
+                margin-bottom: 24px;
+                line-height: 1.8;
+            }
+            .verify-input {
+                width: 100%;
+                padding: 14px 16px;
+                border: 2px solid #e9ecef;
+                border-radius: 10px;
+                font-size: 16px;
+                text-align: center;
+                letter-spacing: 4px;
+                margin-bottom: 16px;
+                transition: border-color 0.3s;
+            }
+            .verify-input:focus {
+                outline: none;
+                border-color: #e94560;
+            }
+            .verify-btn {
+                width: 100%;
+                padding: 14px;
+                background: linear-gradient(135deg, #e94560, #ff6b6b);
+                color: white;
+                border: none;
+                border-radius: 10px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+            .verify-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3);
+            }
+            .verify-error {
+                color: #e94560;
+                font-size: 13px;
+                margin-top: 12px;
+                display: none;
+            }
+            .verify-tip {
+                font-size: 12px;
+                color: #adb5bd;
+                margin-top: 20px;
+            }
+        </style>
+        
+        <div class="verify-overlay">
+            <div class="verify-box">
+                <div class="verify-icon">🔐</div>
+                <div class="verify-title">专属报告</div>
+                <div class="verify-desc">
+                    这是一份付费专属报告<br>
+                    请输入您的访问码解锁查看
+                </div>
+                <input type="text" class="verify-input" id="verifyCode" placeholder="请输入访问码" maxlength="20" autocomplete="off">
+                <button class="verify-btn" onclick="checkCode()">解锁报告</button>
+                <div class="verify-error" id="verifyError">访问码错误，请检查后重试</div>
+                <div class="verify-tip">
+                    访问码请联系客服获取
+                </div>
+            </div>
+        </div>
+        
+        <script>
+        function checkCode() {
+            var code = document.getElementById('verifyCode').value.trim().toUpperCase();
+            if (code === '${VALID_CODE}') {
+                sessionStorage.setItem('report_verified', 'true');
+                location.reload();
+            } else {
+                document.getElementById('verifyError').style.display = 'block';
+                document.getElementById('verifyCode').value = '';
+            }
+        }
+        
+        // 回车键验证
+        document.getElementById('verifyCode').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkCode();
+            }
+        });
+        </script>
+        `;
+    }
+})();
 </script>
 
 </body>
