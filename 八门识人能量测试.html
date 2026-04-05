@@ -874,29 +874,29 @@
 <body>
     <!-- 封面页 -->
     <div id="coverPage" class="container cover-page">
-        <div class="cover-badge">🔥 智能自适应测试</div>
+        <div class="cover-badge">🔥 3万+人在测 · 准到离谱</div>
         <div class="cover-icon">🔮</div>
         <h1 class="cover-title">八门识人能量测试</h1>
         <p class="cover-subtitle">
-            AI智能选题，精准锁定你的能量属性<br>
+            易学智慧解读，精准锁定你的能量属性<br>
             题目因人而异，结果千人千面
         </p>
         <div class="cover-stats">
             <div class="stat-item">
-                <div class="stat-num">~15</div>
-                <div class="stat-label">道智能题</div>
+                <div class="stat-num">20</div>
+                <div class="stat-label">道情景题</div>
             </div>
             <div class="stat-item">
                 <div class="stat-num">56</div>
                 <div class="stat-label">种能量组合</div>
             </div>
             <div class="stat-item">
-                <div class="stat-num">95%</div>
-                <div class="stat-label">精准度</div>
+                <div class="stat-num">免费</div>
+                <div class="stat-label">完全免费</div>
             </div>
         </div>
-        <button class="start-btn" onclick="startTest()">开始智能测试 →</button>
-        <p class="cover-tip">完全免费 · 智能选题 · 结果仅自己可见</p>
+        <button class="start-btn" onclick="startTest()">开始测试你的能量 →</button>
+        <p class="cover-tip">完全免费 · 易学解读 · 结果仅自己可见</p>
     </div>
 
     <!-- 测试页 -->
@@ -905,7 +905,7 @@
             <div id="progressFill" class="progress-fill" style="width: 0%"></div>
         </div>
         <div class="question-header">
-            <div id="questionNum" class="question-num">智能匹配中...</div>
+            <div id="questionNum" class="question-num">解读中...</div>
             <div id="questionText" class="question-text"></div>
         </div>
         <div id="options" class="options"></div>
@@ -1019,15 +1019,40 @@
                     <span class="hook-price-now">¥29.9</span>
                 </div>
                 <div id="hookCountdown" class="hook-countdown">限时优惠：23:59:47</div>
+                
+                <!-- 解锁方式一：邀请裂变 -->
                 <div class="hook-buttons">
                     <button class="hook-btn hook-btn-invite" onclick="showInviteModal()">
                         👥 邀请好友免费解锁
                     </button>
-                    <button class="hook-btn hook-btn-pay" onclick="payNow()">
-                        💰 立即购买
-                    </button>
                 </div>
-                <div class="hook-tip">支付后联系客服获取完整报告</div>
+                
+                <!-- 解锁方式二：扫码购买 -->
+                <div class="hook-divider" style="color: rgba(255,255,255,0.5); margin: 16px 0;">— 或扫码购买 —</div>
+                
+                <div class="redeem-section" style="text-align: center;">
+                    <p style="font-size: 12px; color: rgba(255,255,255,0.8); margin-bottom: 12px;">👇 长按识别二维码支付 👇</p>
+                    
+                    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                        <div>
+                            <p style="font-size: 11px; color: var(--gold); margin-bottom: 6px;">① 扫码支付 ¥29.9</p>
+                            <img src="企微收款码.jpg" alt="支付" style="width: 120px; height: 120px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3);">
+                        </div>
+                        <div>
+                            <p style="font-size: 11px; color: var(--gold); margin-bottom: 6px;">② 加企微领报告</p>
+                            <img src="加我企微.jpg" alt="加我" style="width: 120px; height: 120px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3);">
+                        </div>
+                    </div>
+                    
+                    <p style="font-size: 12px; color: rgba(255,255,255,0.9); margin-top: 12px;">
+                        付款后 → 加企微 → 发「已付款」
+                    </p>
+                    <p style="font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 6px;">
+                        自动收到完整报告链接
+                    </p>
+                </div>
+                
+                <div class="hook-tip">如需帮助请加企微：丁老师@遁甲学堂</div>
             </div>
         </div>
     </div>
@@ -2093,7 +2118,58 @@
     }
 
     function payNow() {
-        window.open('高级感能量报告.html', '_blank');
+        // 跳转到购买页面/微信小商店
+        alert('请到「丁老师」企微购买兑换码，付款后获得兑换码');
+    }
+
+    // 兑换码验证
+    var validCodes = []; // 从外部加载
+
+    function loadCodes() {
+        // 实际使用时从文件加载
+        // 这里简化处理，直接内嵌（生产环境建议用接口）
+    }
+
+    function verifyCode() {
+        var code = document.getElementById('redeemCode').value.trim().toUpperCase();
+        var errorEl = document.getElementById('codeError');
+        var successEl = document.getElementById('codeSuccess');
+        
+        errorEl.style.display = 'none';
+        successEl.style.display = 'none';
+        
+        if (!code) {
+            errorEl.textContent = '请输入兑换码';
+            errorEl.style.display = 'block';
+            return;
+        }
+        
+        // 验证格式（BM开头 + 10位）
+        if (!/^BM[A-Z0-9]{10}$/.test(code)) {
+            errorEl.textContent = '兑换码格式不正确';
+            errorEl.style.display = 'block';
+            return;
+        }
+        
+        // 模拟验证（实际使用时对接接口验证）
+        // 这里直接验证通过，生产环境请替换为真实验证
+        // 临时设置：任意符合格式的BM开头10位码都可解锁
+        if (code.startsWith('BM') && code.length === 12) {
+            successEl.textContent = '✅ 验证成功！正在解锁...';
+            successEl.style.display = 'block';
+            
+            // 保存到本地，表示已解锁
+            localStorage.setItem('unlocked_' + userId, 'true');
+            
+            // 关闭弹窗，显示完整报告
+            setTimeout(function() {
+                closeHookModal();
+                showFullReport();
+            }, 1000);
+        } else {
+            errorEl.textContent = '兑换码无效或已过期';
+            errorEl.style.display = 'block';
+        }
     }
 
     function startCountdown() {
