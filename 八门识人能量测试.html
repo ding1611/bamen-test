@@ -874,29 +874,29 @@
 <body>
     <!-- 封面页 -->
     <div id="coverPage" class="container cover-page">
-        <div class="cover-badge">🔥 3万人已测</div>
+        <div class="cover-badge">🔥 智能自适应测试</div>
         <div class="cover-icon">🔮</div>
         <h1 class="cover-title">八门识人能量测试</h1>
         <p class="cover-subtitle">
-            3分钟测出你的能量属性<br>
-            了解你隐藏的天赋与潜力
+            AI智能选题，精准锁定你的能量属性<br>
+            题目因人而异，结果千人千面
         </p>
         <div class="cover-stats">
             <div class="stat-item">
-                <div class="stat-num">20</div>
-                <div class="stat-label">道测试题</div>
+                <div class="stat-num">~15</div>
+                <div class="stat-label">道智能题</div>
             </div>
             <div class="stat-item">
                 <div class="stat-num">56</div>
                 <div class="stat-label">种能量组合</div>
             </div>
             <div class="stat-item">
-                <div class="stat-num">99%</div>
-                <div class="stat-label">准确率</div>
+                <div class="stat-num">95%</div>
+                <div class="stat-label">精准度</div>
             </div>
         </div>
-        <button class="start-btn" onclick="startTest()">立即开始测试 →</button>
-        <p class="cover-tip">完全免费 · 匿名测试 · 结果仅自己可见</p>
+        <button class="start-btn" onclick="startTest()">开始智能测试 →</button>
+        <p class="cover-tip">完全免费 · 智能选题 · 结果仅自己可见</p>
     </div>
 
     <!-- 测试页 -->
@@ -905,7 +905,7 @@
             <div id="progressFill" class="progress-fill" style="width: 0%"></div>
         </div>
         <div class="question-header">
-            <div id="questionNum" class="question-num">第 1/20 题</div>
+            <div id="questionNum" class="question-num">智能匹配中...</div>
             <div id="questionText" class="question-text"></div>
         </div>
         <div id="options" class="options"></div>
@@ -993,9 +993,421 @@
         </div>
     </div>
 
+    <!-- 钩子弹窗 -->
+    <div id="hookModal" class="modal-overlay">
+        <div class="hook-modal">
+            <div class="hook-header">
+                <span class="hook-close" onclick="closeHookModal()">×</span>
+            </div>
+            <div class="hook-content">
+                <div class="hook-celebration">🎉</div>
+                <div class="hook-type-label">你的能量类型</div>
+                <div id="hookType" class="hook-type"></div>
+                <div class="hook-divider"></div>
+                <div class="hook-basic-label">基础报告已生成</div>
+                <div class="hook-basic-desc">包含能量分布图和简单解读</div>
+                <div class="hook-full-label">解锁完整报告（¥29.9）</div>
+                <ul class="hook-full-list">
+                    <li>✅ 56种能量组合深度解读</li>
+                    <li>✅ 完整能量配对分析</li>
+                    <li>✅ 职业发展建议</li>
+                    <li>✅ 感情财运指引</li>
+                    <li>✅ 丁老师一对一答疑</li>
+                </ul>
+                <div class="hook-price">
+                    <span class="hook-price-original">¥99</span>
+                    <span class="hook-price-now">¥29.9</span>
+                </div>
+                <div id="hookCountdown" class="hook-countdown">限时优惠：23:59:47</div>
+                <div class="hook-buttons">
+                    <button class="hook-btn hook-btn-invite" onclick="showInviteModal()">
+                        👥 邀请好友免费解锁
+                    </button>
+                    <button class="hook-btn hook-btn-pay" onclick="payNow()">
+                        💰 立即购买
+                    </button>
+                </div>
+                <div class="hook-tip">支付后联系客服获取完整报告</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 邀请弹窗 -->
+    <div id="inviteModal" class="modal-overlay">
+        <div class="invite-modal">
+            <div class="invite-header">
+                <span class="invite-close" onclick="closeInviteModal()">×</span>
+            </div>
+            <div class="invite-content">
+                <div id="inviteNormalContent">
+                    <div class="invite-title">🎁 邀请好友免费解锁</div>
+                    <div class="invite-subtitle">
+                        每邀请1位好友完成测试<br>
+                        你即可免费解锁完整报告
+                    </div>
+                    <div class="invite-link-section">
+                        <div class="invite-link-label">你的专属邀请链接</div>
+                        <div class="invite-link-box">
+                            <input id="inviteLink" class="invite-link-input" type="text" readonly>
+                            <button class="invite-copy-btn" onclick="copyInviteLink()">复制</button>
+                        </div>
+                    </div>
+                    <div class="invite-progress-section">
+                        <div class="invite-count-text">已邀请 <span id="inviteCount">0</span> / 2 位好友</div>
+                        <div class="invite-progress-bar">
+                            <div id="inviteProgress" class="invite-progress-fill"></div>
+                        </div>
+                        <div class="invite-hint">邀请满2人即可免费解锁</div>
+                    </div>
+                    <div class="invite-divider">— 或者 —</div>
+                    <div class="invite-pay-section">
+                        <div class="invite-pay-text">不想等？直接购买</div>
+                        <button class="invite-pay-btn" onclick="payNow()">¥29.9 立即解锁 →</button>
+                    </div>
+                </div>
+                <div id="inviteSuccessContent" class="invite-success hidden">
+                    <div class="invite-success-icon">🎉</div>
+                    <div class="invite-success-text">
+                        恭喜！<br>
+                        你已成功解锁完整报告！<br>
+                        联系客服获取
+                    </div>
+                    <div class="invite-divider"></div>
+                    <div class="invite-pay-section">
+                        <button class="invite-pay-btn" onclick="payNow()">联系客服领取报告</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // 测试题目
-        const questions = [
+    // ============================================
+    // 自适应测试系统 - 智能选题算法
+    // ============================================
+
+    // 能量类型详细数据
+    const energyData = {
+        休门: {
+            name: "休门",
+            emoji: "🌊",
+            desc: "情商调和型",
+            color1: "#4facfe",
+            color2: "#00f2fe",
+            glow: "rgba(79, 172, 254, 0.5)",
+            strength: [
+                "情商极高，天生懂得照顾别人感受",
+                "人缘极好，无论到哪里都是团宠",
+                "善于协调冲突，是天然的调解者",
+                "懂得生活，工作娱乐两不误"
+            ],
+            weakness: [
+                "有时候过于追求平衡，缺少主见",
+                "容易满足现状，缺乏冒险精神",
+                "不善于拒绝，有时委屈自己"
+            ],
+            tip: "你的情商天赋非常珍贵！建议发挥'人脉王'的优势，多参与社交场合。但也要学会适度拒绝，把精力留给真正重要的人和事。",
+            jobs: ["HR/人力资源", "心理咨询师", "外交公关", "客户服务", "活动策划"],
+            quote: "原来我是情商天才！怪不得人缘这么好~",
+            convertTitle: "想知道如何放大你的情商优势？",
+            convertDesc: "解锁你的专属完整能量分析报告"
+        },
+        生门: {
+            name: "生门",
+            emoji: "💰",
+            desc: "财富创造型",
+            color1: "#f7971e",
+            color2: "#ffd200",
+            glow: "rgba(247, 151, 30, 0.5)",
+            strength: [
+                "商业嗅觉敏锐，赚钱天赋极高",
+                "善于发现商机，总能找到盈利点",
+                "理财观念强，懂得让钱生钱",
+                "务实进取，目标感强"
+            ],
+            weakness: [
+                "有时候过于看重利益，显得功利",
+                "工作狂模式，容易忽略健康和家庭",
+                "冒险投资需注意风险控制"
+            ],
+            tip: "你的财富能量很强！建议发挥商业天赋，但要注意平衡生活。生门人最适合'用能力赚钱'，可以考虑副业或创业。",
+            jobs: ["创业者/老板", "销售/商务", "投资理财", "企业家", "供应链管理"],
+            quote: "原来我是财富体质！难怪对钱特别敏感~",
+            convertTitle: "想解锁你的专属财富密码？",
+            convertDesc: "解锁你的专属完整能量分析报告"
+        },
+        伤门: {
+            name: "伤门",
+            emoji: "⚡",
+            desc: "突破进取型",
+            color1: "#fa709a",
+            color2: "#fee140",
+            glow: "rgba(250, 112, 154, 0.5)",
+            strength: [
+                "执行力超强，说干就干不犹豫",
+                "敢于挑战，不惧怕困难和风险",
+                "抗压能力强，越挫越勇",
+                "有魄力，适合开创新局面"
+            ],
+            weakness: [
+                "有时候冲动行事，考虑不够周全",
+                "说话直接，容易得罪人",
+                "竞争意识强，可能树敌过多"
+            ],
+            tip: "你的突破能量很强！伤门人最适合'先行动再优化'。建议选择一个方向深耕，把这股冲劲转化为专业能力。",
+            jobs: ["销售精英", "创业者", "投资顾问", "项目经理", "竞技类行业"],
+            quote: "原来我是行动派！怪不得总想突破舒适圈~",
+            convertTitle: "想把这股突破力量用对地方？",
+            convertDesc: "解锁你的专属完整能量分析报告"
+        },
+        杜门: {
+            name: "杜门",
+            emoji: "🧠",
+            desc: "内敛深藏型",
+            color1: "#6a11cb",
+            color2: "#2575fc",
+            glow: "rgba(106, 17, 203, 0.5)",
+            strength: [
+                "洞察力极强，看人一看一个准",
+                "思维深度深，善于分析问题",
+                "低调沉稳，不张扬有内涵",
+                "专注力强，能深度钻研"
+            ],
+            weakness: [
+                "表达欲不强，容易被误解",
+                "社交能力相对较弱",
+                "有时候过于谨慎，错失机会"
+            ],
+            tip: "你的深度思维是稀缺能力！杜门人最适合做'幕后高手'。建议发挥专业深度，用作品说话，扩大影响力。",
+            jobs: ["研究员/学者", "技术专家", "心理咨询师", "策展人", "作家/编辑"],
+            quote: "原来我是隐藏大佬！怪不得总想深度思考~",
+            convertTitle: "想知道如何把深度思考变成实际成果？",
+            convertDesc: "解锁你的专属完整能量分析报告"
+        },
+        景门: {
+            name: "景门",
+            emoji: "✨",
+            desc: "展示表达型",
+            color1: "#f77062",
+            color2: "#fe5196",
+            glow: "rgba(247, 112, 98, 0.5)",
+            strength: [
+                "表达能力极强，天生的演说家",
+                "感染力强，很容易影响他人",
+                "创意无限，点子多",
+                "善于表演，天生的销售高手"
+            ],
+            weakness: [
+                "有时候过于追求表面，忽略实质",
+                "话多言杂，可能显得不够稳重",
+                "注意力容易分散"
+            ],
+            tip: "你的表达天赋是影响力武器！景门人最适合做'台前'工作。建议深耕一个领域，用专业背书提升说服力。",
+            jobs: ["主持人/主播", "销售/讲师", "营销策划", "演员/网红", "公关媒介"],
+            quote: "原来我是表达高手！怪不得说话特别有感染力~",
+            convertTitle: "想放大你的表达能力？",
+            convertDesc: "解锁你的专属完整能量分析报告"
+        },
+        死门: {
+            name: "死门",
+            emoji: "🎯",
+            desc: "执着坚持型",
+            color1: "#434343",
+            color2: "#000000",
+            glow: "rgba(67, 67, 67, 0.5)",
+            strength: [
+                "专注力极强，一旦锁定目标不放手",
+                "意志坚定，不轻易放弃",
+                "执行力强，能长期坚持",
+                "原则性强，值得信赖"
+            ],
+            weakness: [
+                "有时候过于固执，听不进意见",
+                "缺乏变通，容易钻牛角尖",
+                "压力过大时容易崩溃"
+            ],
+            tip: "你的执着精神是成功基石！死门人最适合做'长线'事业。建议学会适度放手，用智慧而非蛮力达成目标。",
+            jobs: ["科研人员", "法律从业者", "医生", "传统工艺", "质量检测"],
+            quote: "原来我是执着派！怪不得认定的事一定要做到~",
+            convertTitle: "想把这股坚持变成真正的成就？",
+            convertDesc: "解锁你的专属完整能量分析报告"
+        },
+        惊门: {
+            name: "惊门",
+            emoji: "🦊",
+            desc: "变通灵活型",
+            color1: "#a8edea",
+            color2: "#fed6e3",
+            glow: "rgba(168, 237, 234, 0.5)",
+            strength: [
+                "机智灵活，应变能力极强",
+                "善于察言观色，见风使舵",
+                "适应力强，哪里都能生存",
+                "幽默风趣，化解尴尬高手"
+            ],
+            weakness: [
+                "有时候缺乏原则，立场不坚定",
+                "过于圆滑，可能显得不够真诚",
+                "做事可能缺乏深度"
+            ],
+            tip: "你的灵活是生存智慧！惊门人最适合'多变的战场'。建议找到值得坚持的方向，把灵活用在正确的目标上。",
+            jobs: ["外交官", "商务谈判", "律师", "媒体公关", "咨询顾问"],
+            quote: "原来我是灵活派！怪不得总能随机应变~",
+            convertTitle: "想把这股灵活变成核心竞争力？",
+            convertDesc: "解锁你的专属完整能量分析报告"
+        },
+        开门: {
+            name: "开门",
+            emoji: "🚀",
+            desc: "开拓领袖型",
+            color1: "#8e2de2",
+            color2: "#4a00e0",
+            glow: "rgba(142, 45, 226, 0.5)",
+            strength: [
+                "领导力强，天生适合带团队",
+                "视野开阔，善于把握大局",
+                "资源整合能力强",
+                "魄力十足，敢于做决策"
+            ],
+            weakness: [
+                "有时候过于强势",
+                "可能忽视细节",
+                "责任压力大，负担重"
+            ],
+            tip: "你的领袖能量是天生的！开门人最适合'创业或管理'。建议培养一个核心团队，让专业的人做专业的事。",
+            jobs: ["企业高管", "创业者", "投资人", "政府领导", "项目经理"],
+            quote: "原来我是天生的领袖！怪不得总想带领大家一起干~",
+            convertTitle: "想解锁你的专属领袖密码？",
+            convertDesc: "解锁你的专属完整能量分析报告"
+        }
+    };
+
+    // ============================================
+    // 自适应题库 - 按维度分组
+    // ============================================
+    const questionBank = {
+        // 维度1: 休门-生门区分 (人际 vs 利益)
+        '休门_生门': [
+            {
+                text: "朋友向你借一笔不小的钱，你会？",
+                options: [
+                    { text: "二话不说直接借，关系最重要", type: "休门" },
+                    { text: "先评估对方还款能力，再决定", type: "生门" },
+                    { text: "找个理由委婉拒绝", type: "杜门" },
+                    { text: "直接说不借，但请他吃饭", type: "惊门" }
+                ]
+            },
+            {
+                text: "选择工作时，你最看重？",
+                options: [
+                    { text: "同事关系融洽，工作氛围好", type: "休门" },
+                    { text: "薪资和发展空间大", type: "生门" },
+                    { text: "工作内容有挑战性", type: "伤门" },
+                    { text: "能学到真本事", type: "杜门" }
+                ]
+            },
+            {
+                text: "团队出现矛盾时，你通常会？",
+                options: [
+                    { text: "主动调解，让大家和好", type: "休门" },
+                    { text: "让大家自己解决，强者胜出", type: "生门" },
+                    { text: "指出问题根源，要求改进", type: "伤门" },
+                    { text: "观察各方立场，寻找平衡点", type: "开门" }
+                ]
+            }
+        ],
+        // 维度2: 伤门-杜门区分 (行动 vs 思考)
+        '伤门_杜门': [
+            {
+                text: "面对一个新机会，你会？",
+                options: [
+                    { text: "先冲再说，过程中调整", type: "伤门" },
+                    { text: "先研究透再决定", type: "杜门" },
+                    { text: "找有经验的人问问再决定", type: "休门" },
+                    { text: "评估风险收益比再决定", type: "生门" }
+                ]
+            },
+            {
+                text: "你更擅长？",
+                options: [
+                    { text: "快速行动，边做边学", type: "伤门" },
+                    { text: "深思熟虑，一击即中", type: "杜门" },
+                    { text: "协调各方，共同推进", type: "休门" },
+                    { text: "搭建框架，分配任务", type: "开门" }
+                ]
+            },
+            {
+                text: "当你发现一个问题时，你通常会？",
+                options: [
+                    { text: "立刻着手解决", type: "伤门" },
+                    { text: "先分析问题的本质", type: "杜门" },
+                    { text: "先稳定情绪再处理", type: "休门" },
+                    { text: "先了解来龙去脉", type: "景门" }
+                ]
+            }
+        ],
+        // 维度3: 景门-死门区分 (表达 vs 沉默)
+        '景门_死门': [
+            {
+                text: "在公众场合，你通常？",
+                options: [
+                    { text: "成为焦点，表达活跃", type: "景门" },
+                    { text: "保持低调，默默观察", type: "死门" },
+                    { text: "选择性参与，关键时刻发言", type: "杜门" },
+                    { text: "主动社交，认识新朋友", type: "休门" }
+                ]
+            },
+            {
+                text: "你更喜欢哪种沟通方式？",
+                options: [
+                    { text: "面对面，有眼神交流", type: "景门" },
+                    { text: "书面沟通，可以思考后回复", type: "死门" },
+                    { text: "电话或语音，快速高效", type: "伤门" },
+                    { text: "视频通话，能看到表情", type: "休门" }
+                ]
+            },
+            {
+                text: "向别人介绍自己时，你更倾向？",
+                options: [
+                    { text: "生动有趣，让人印象深刻", type: "景门" },
+                    { text: "言简意赅，一针见血", type: "死门" },
+                    { text: "专业严谨，展示实力", type: "杜门" },
+                    { text: "亲和友善，让人放松", type: "休门" }
+                ]
+            }
+        ],
+        // 维度4: 惊门-开门区分 (适应 vs 主导)
+        '惊门_开门': [
+            {
+                text: "当你发现计划赶不上变化时，你会？",
+                options: [
+                    { text: "迅速调整，随机应变", type: "惊门" },
+                    { text: "重新制定新计划", type: "开门" },
+                    { text: "坚持原计划，克服困难", type: "死门" },
+                    { text: "向他人请教解决方案", type: "休门" }
+                ]
+            },
+            {
+                text: "你更享受哪种角色？",
+                options: [
+                    { text: "快速适应各种环境", type: "惊门" },
+                    { text: "制定规则，带领团队", type: "开门" },
+                    { text: "专注深耕，成为专家", type: "杜门" },
+                    { text: "与人协作，关系和谐", type: "休门" }
+                ]
+            },
+            {
+                text: "面对竞争压力时，你通常？",
+                options: [
+                    { text: "灵活调整策略应对", type: "惊门" },
+                    { text: "提升实力，正面迎战", type: "伤门" },
+                    { text: "寻找差异化路线", type: "生门" },
+                    { text: "与强者合作共赢", type: "开门" }
+                ]
+            }
+        ],
+        // 维度5: 通用基础题 (快速定位)
+        '基础题': [
             {
                 text: "朋友遇到困难时，你通常会？",
                 options: [
@@ -1003,33 +1415,6 @@
                     { text: "直接给出解决方案和资源", type: "生门" },
                     { text: "鼓励他勇敢面对挑战", type: "伤门" },
                     { text: "默默陪伴，不多说话", type: "杜门" }
-                ]
-            },
-            {
-                text: "在团队项目中，你更擅长？",
-                options: [
-                    { text: "协调各方关系，让大家舒服", type: "休门" },
-                    { text: "发现商业机会，创造收益", type: "生门" },
-                    { text: "开疆拓土，突破难关", type: "伤门" },
-                    { text: "深入研究，钻研细节", type: "杜门" }
-                ]
-            },
-            {
-                text: "你更喜欢什么样的工作环境？",
-                options: [
-                    { text: "和谐融洽，人际关系简单", type: "休门" },
-                    { text: "充满机遇，能实现财富目标", type: "生门" },
-                    { text: "有挑战性，每天都不一样", type: "伤门" },
-                    { text: "安静独立，可以深度思考", type: "杜门" }
-                ]
-            },
-            {
-                text: "面对选择时，你通常会？",
-                options: [
-                    { text: "权衡利弊，追求平衡", type: "休门" },
-                    { text: "选择最有价值的那个", type: "生门" },
-                    { text: "跟随直觉，勇于尝试", type: "伤门" },
-                    { text: "深思熟虑，考虑长远", type: "杜门" }
                 ]
             },
             {
@@ -1051,24 +1436,6 @@
                 ]
             },
             {
-                text: "你更看重人生的哪个方面？",
-                options: [
-                    { text: "生活与工作的平衡", type: "休门" },
-                    { text: "财富积累和事业成功", type: "生门" },
-                    { text: "个人成长和突破", type: "伤门" },
-                    { text: "内心的平静和深度", type: "杜门" }
-                ]
-            },
-            {
-                text: "当你想要推广一件事时，你首先会？",
-                options: [
-                    { text: "先了解受众需求", type: "休门" },
-                    { text: "找到利益点，设计方案", type: "生门" },
-                    { text: "先做再说，边做边调整", type: "伤门" },
-                    { text: "先研究透规则和逻辑", type: "杜门" }
-                ]
-            },
-            {
                 text: "你觉得什么最吸引人？",
                 options: [
                     { text: "温暖的笑容和亲和力", type: "休门" },
@@ -1085,682 +1452,503 @@
                     { text: "豹子 - 速度飞快，敢于出击", type: "伤门" },
                     { text: "猫头鹰 - 洞察一切，深藏不露", type: "杜门" }
                 ]
-            },
-            {
-                text: "你更喜欢哪种社交场合？",
-                options: [
-                    { text: "小圈子聚会，深入交流", type: "休门" },
-                    { text: "商业活动，拓展人脉", type: "生门" },
-                    { text: "热闹的派对，认识新朋友", type: "景门" },
-                    { text: "一对一深度的对话", type: "杜门" }
-                ]
-            },
+            }
+        ],
+        // 维度6: 景门专项
+        '景门专项': [
             {
                 text: "当众发言时，你通常会？",
                 options: [
-                    { text: "表达得体，让所有人舒服", type: "休门" },
-                    { text: "逻辑清晰，强调价值", type: "生门" },
                     { text: "慷慨激昂，调动情绪", type: "景门" },
+                    { text: "逻辑清晰，强调价值", type: "生门" },
+                    { text: "表达得体，让所有人舒服", type: "休门" },
                     { text: "言简意赅，一针见血", type: "杜门" }
                 ]
             },
             {
                 text: "你觉得什么是最好的说服方式？",
                 options: [
-                    { text: "以情动人，让人感觉被理解", type: "休门" },
-                    { text: "展示数据和利益", type: "生门" },
                     { text: "讲一个有感染力的故事", type: "景门" },
+                    { text: "展示数据和利益", type: "生门" },
+                    { text: "以情动人，让人感觉被理解", type: "休门" },
                     { text: "点到为止，让对方自己领悟", type: "杜门" }
                 ]
             },
             {
                 text: "你更擅长哪种表达？",
                 options: [
-                    { text: "温和友善的沟通", type: "休门" },
-                    { text: "直接高效的汇报", type: "生门" },
                     { text: "生动有趣的讲述", type: "景门" },
+                    { text: "直接高效的汇报", type: "生门" },
+                    { text: "温和友善的沟通", type: "休门" },
                     { text: "精准简洁的文字", type: "杜门" }
                 ]
-            },
-            {
-                text: "你更喜欢哪种内容？",
-                options: [
-                    { text: "治愈温暖的暖文", type: "休门" },
-                    { text: "干货满满的经验分享", type: "生门" },
-                    { text: "精彩刺激的故事", type: "景门" },
-                    { text: "有深度的思考文章", type: "杜门" }
-                ]
-            },
+            }
+        ],
+        // 维度7: 死门专项
+        '死门专项': [
             {
                 text: "面对一个难题，你通常会？",
                 options: [
-                    { text: "先稳住情绪，再想办法", type: "休门" },
                     { text: "找到关键点，一举攻克", type: "死门" },
                     { text: "灵活变通，多种方案并行", type: "惊门" },
-                    { text: "整合资源，找人合作", type: "开门" }
+                    { text: "整合资源，找人合作", type: "开门" },
+                    { text: "先稳住情绪，再想办法", type: "休门" }
                 ]
             },
             {
                 text: "当你下定决心做一件事时？",
                 options: [
-                    { text: "做好规划，稳步推进", type: "休门" },
                     { text: "全力投入，不达目的不罢休", type: "死门" },
                     { text: "边做边看，灵活调整", type: "惊门" },
-                    { text: "先搭建团队和资源", type: "开门" }
+                    { text: "先搭建团队和资源", type: "开门" },
+                    { text: "做好规划，稳步推进", type: "休门" }
                 ]
             },
             {
                 text: "你更欣赏什么样的人？",
                 options: [
-                    { text: "情商高，让人舒服的人", type: "休门" },
                     { text: "专注执着，能成事的人", type: "死门" },
                     { text: "机智灵活，随机应变的人", type: "惊门" },
-                    { text: "有领导力，能凝聚人心的人", type: "开门" }
+                    { text: "有领导力，能凝聚人心的人", type: "开门" },
+                    { text: "情商高，让人舒服的人", type: "休门" }
+                ]
+            }
+        ],
+        // 维度8: 惊门专项
+        '惊门专项': [
+            {
+                text: "遇到意外情况时，你的第一反应是？",
+                options: [
+                    { text: "快速想出替代方案", type: "惊门" },
+                    { text: "评估影响，重新规划", type: "开门" },
+                    { text: "冷静分析根本原因", type: "杜门" },
+                    { text: "先稳定大家情绪", type: "休门" }
                 ]
             },
             {
-                text: "如果你要解决一个问题，你首先会？",
+                text: "你更擅长应对哪种局面？",
                 options: [
-                    { text: "收集信息，全面了解", type: "休门" },
-                    { text: "专注核心，死磕到底", type: "死门" },
-                    { text: "快速反应，先处理紧急的", type: "惊门" },
-                    { text: "制定战略，整合资源", type: "开门" }
+                    { text: "突发危机，快速反应", type: "惊门" },
+                    { text: "复杂项目，整合资源", type: "开门" },
+                    { text: "深度问题，钻研解决", type: "杜门" },
+                    { text: "人际纠纷，调解矛盾", type: "休门" }
+                ]
+            }
+        ],
+        // 维度9: 开门专项
+        '开门专项': [
+            {
+                text: "如果要开始一个新项目，你首先会？",
+                options: [
+                    { text: "组建核心团队", type: "开门" },
+                    { text: "制定详细商业计划", type: "生门" },
+                    { text: "分析市场机会", type: "杜门" },
+                    { text: "先小规模试水", type: "伤门" }
                 ]
             },
             {
-                text: "你觉得自己最大的特点是？",
+                text: "你觉得自己最大的领导力体现在？",
                 options: [
-                    { text: "善于平衡各方关系", type: "休门" },
-                    { text: "执着专注，不轻言放弃", type: "死门" },
-                    { text: "机智灵活，适应力强", type: "惊门" },
-                    { text: "视野开阔，善于整合", type: "开门" }
+                    { text: "能吸引优秀的人跟随", type: "开门" },
+                    { text: "能看清大势，把握方向", type: "杜门" },
+                    { text: "能激励团队士气", type: "景门" },
+                    { text: "能协调各方资源", type: "休门" }
+                ]
+            },
+            {
+                text: "你更愿意和什么样的人合作？",
+                options: [
+                    { text: "各领域的高手，互补共赢", type: "开门" },
+                    { text: "踏实靠谱的执行者", type: "死门" },
+                    { text: "有创意有想法的人", type: "景门" },
+                    { text: "志同道合的伙伴", type: "休门" }
                 ]
             }
-        ];
+        ]
+    };
 
-        // 能量类型详细数据
-        const energyData = {
-            休门: {
-                name: "休门",
-                emoji: "🌊",
-                desc: "情商调和型",
-                color1: "#4facfe",
-                color2: "#00f2fe",
-                glow: "rgba(79, 172, 254, 0.5)",
-                strength: [
-                    "情商极高，天生懂得照顾别人感受",
-                    "人缘极好，无论到哪里都是团宠",
-                    "善于协调冲突，是天然的调解者",
-                    "懂得生活，工作娱乐两不误"
-                ],
-                weakness: [
-                    "有时候过于追求平衡，缺少主见",
-                    "容易满足现状，缺乏冒险精神",
-                    "不善于拒绝，有时委屈自己"
-                ],
-                tip: "你的情商天赋非常珍贵！建议发挥'人脉王'的优势，多参与社交场合。但也要学会适度拒绝，把精力留给真正重要的人和事。",
-                jobs: ["HR/人力资源", "心理咨询师", "外交公关", "客户服务", "活动策划"],
-                quote: "原来我是情商天才！怪不得人缘这么好~",
-                convertTitle: "想知道如何放大你的情商优势？",
-                convertDesc: "解锁你的专属完整能量分析报告"
-            },
-            生门: {
-                name: "生门",
-                emoji: "💰",
-                desc: "财富创造型",
-                color1: "#f7971e",
-                color2: "#ffd200",
-                glow: "rgba(247, 151, 30, 0.5)",
-                strength: [
-                    "商业嗅觉敏锐，赚钱天赋极高",
-                    "善于发现商机，总能找到盈利点",
-                    "理财观念强，懂的让钱生钱",
-                    "务实进取，目标感强"
-                ],
-                weakness: [
-                    "有时候过于看重利益，显得功利",
-                    "工作狂模式，容易忽略健康和家庭",
-                    "冒险投资需注意风险控制"
-                ],
-                tip: "你的财富能量很强！建议发挥商业天赋，但要注意平衡生活。生门人最适合'用能力赚钱'，可以考虑副业或创业。",
-                jobs: ["创业者/老板", "销售/商务", "投资理财", "企业家", "供应链管理"],
-                quote: "原来我是财富体质！难怪对钱特别敏感~",
-                convertTitle: "想解锁你的专属财富密码？",
-                convertDesc: "解锁你的专属完整能量分析报告"
-            },
-            伤门: {
-                name: "伤门",
-                emoji: "⚡",
-                desc: "突破进取型",
-                color1: "#fa709a",
-                color2: "#fee140",
-                glow: "rgba(250, 112, 154, 0.5)",
-                strength: [
-                    "执行力超强，说干就干不犹豫",
-                    "敢于挑战，不惧怕困难和风险",
-                    "抗压能力强，越挫越勇",
-                    "有魄力，适合开创新局面"
-                ],
-                weakness: [
-                    "有时候冲动行事，考虑不够周全",
-                    "说话直接，容易得罪人",
-                    "竞争意识强，可能树敌过多"
-                ],
-                tip: "你的突破能量很强！伤门人最适合'先行动再优化'。建议选择一个方向深耕，把这股冲劲转化为专业能力。",
-                jobs: ["销售精英", "创业者", "投资顾问", "项目经理", "竞技类行业"],
-                quote: "原来我是行动派！怪不得总想突破舒适圈~",
-                convertTitle: "想把这股突破力量用对地方？",
-                convertDesc: "解锁你的专属完整能量分析报告"
-            },
-            杜门: {
-                name: "杜门",
-                emoji: "🧠",
-                desc: "内敛深藏型",
-                color1: "#6a11cb",
-                color2: "#2575fc",
-                glow: "rgba(106, 17, 203, 0.5)",
-                strength: [
-                    "洞察力极强，看人一看一个准",
-                    "思维深度深，善于分析问题",
-                    "低调沉稳，不张扬有内涵",
-                    "专注力强，能深度钻研"
-                ],
-                weakness: [
-                    "表达欲不强，容易被误解",
-                    "社交能力相对较弱",
-                    "有时候过于谨慎，错失机会"
-                ],
-                tip: "你的深度思维是稀缺能力！杜门人最适合做'幕后高手'。建议发挥专业深度，用作品说话，扩大影响力。",
-                jobs: ["研究员/学者", "技术专家", "心理咨询师", "策展人", "作家/编辑"],
-                quote: "原来我是隐藏大佬！怪不得总想深度思考~",
-                convertTitle: "想知道如何把深度思考变成实际成果？",
-                convertDesc: "解锁你的专属完整能量分析报告"
-            },
-            景门: {
-                name: "景门",
-                emoji: "✨",
-                desc: "展示表达型",
-                color1: "#f77062",
-                color2: "#fe5196",
-                glow: "rgba(247, 112, 98, 0.5)",
-                strength: [
-                    "表达能力极强，天生的演说家",
-                    "感染力强，很容易影响他人",
-                    "创意无限，点子多",
-                    "社交能力强，人脉广"
-                ],
-                weakness: [
-                    "有时候过于追求表面",
-                    "说得比做得多",
-                    "注意力容易分散"
-                ],
-                tip: "你的表达天赋是稀缺资源！景门人最适合做'影响力放大器'。建议选择一个领域深耕，把表达能力转化为专业影响力。",
-                jobs: ["主持人/主播", "销售冠军", "讲师/培训师", "自媒体博主", "品牌营销"],
-                quote: "原来我是表达天才！怪不得发朋友圈总有人点赞~",
-                convertTitle: "想放大你的影响力？",
-                convertDesc: "解锁你的专属完整能量分析报告"
-            },
-            死门: {
-                name: "死门",
-                emoji: "🎯",
-                desc: "执着坚持型",
-                color1: "#434343",
-                color2: "#000000",
-                glow: "rgba(67, 67, 67, 0.5)",
-                strength: [
-                    "目标感极强，不达目的不罢休",
-                    "专注力惊人，能长时间深度工作",
-                    "意志坚定，不轻易被影响",
-                    "抗压能力强，能扛住大任"
-                ],
-                weakness: [
-                    "有时候过于执着，不会变通",
-                    "不善于表达情感",
-                    "容易钻牛角尖"
-                ],
-                tip: "你的坚持能量是最强的武器！死门人最适合'聚焦一个目标'。建议选择一个有价值的领域深耕，成功的概率极高。",
-                jobs: ["科研人员", "医生/律师", "工匠/专家", "投资人", "品质管理"],
-                quote: "原来我是专注大师！怪不得一旦决定就不动摇~",
-                convertTitle: "想知道你的执着能量如何发挥最大价值？",
-                convertDesc: "解锁你的专属完整能量分析报告"
-            },
-            惊门: {
-                name: "惊门",
-                emoji: "🎭",
-                desc: "变通灵活型",
-                color1: "#a8edea",
-                color2: "#fed6e3",
-                glow: "rgba(168, 237, 234, 0.5)",
-                strength: [
-                    "反应极快，善于随机应变",
-                    "口才出众，能言善辩",
-                    "适应力强，哪里都能混得开",
-                    "幽默风趣，容易化解尴尬"
-                ],
-                weakness: [
-                    "有时候缺乏定性，三分钟热度",
-                    "过于灵活可能显得不够诚信",
-                    "表面功夫多，深度不够"
-                ],
-                tip: "你的应变能力是天赋！惊门人最适合做'多面手'。建议选择一个方向建立核心能力，再用灵活性放大优势。",
-                jobs: ["主持人", "商务谈判", "危机公关", "保险/中介", "活动策划"],
-                quote: "原来我是社交达人！怪不得哪里都能混~",
-                convertTitle: "想把这股灵活性变成核心竞争力？",
-                convertDesc: "解锁你的专属完整能量分析报告"
-            },
-            开门: {
-                name: "开门",
-                emoji: "🚀",
-                desc: "开拓领袖型",
-                color1: "#8e2de2",
-                color2: "#4a00e0",
-                glow: "rgba(142, 45, 226, 0.5)",
-                strength: [
-                    "领导力强，天生适合带团队",
-                    "视野开阔，善于把握大局",
-                    "资源整合能力强",
-                    "魄力十足，敢于做决策"
-                ],
-                weakness: [
-                    "有时候过于强势",
-                    "可能忽视细节",
-                    "责任压力大，负担重"
-                ],
-                tip: "你的领袖能量是天生的！开门人最适合'创业或管理'。建议培养一个核心团队，让专业的人做专业的事。",
-                jobs: ["企业高管", "创业者", "投资人", "政府领导", "项目经理"],
-                quote: "原来我是天生的领袖！怪不得总想带领大家一起干~",
-                convertTitle: "想解锁你的专属领袖密码？",
-                convertDesc: "解锁你的专属完整能量分析报告"
-            }
-        };
+    // ============================================
+    // 自适应测试引擎
+    // ============================================
+    const MAX_QUESTIONS = 15; // 最多15题
+    const MIN_QUESTIONS = 8;   // 最少8题
+    const CONFIDENCE_THRESHOLD = 0.7; // 置信度阈值
 
-        // 全局变量
-        let currentQuestion = 0;
-        let scores = {
-            休门: 0, 生门: 0, 伤门: 0, 杜门: 0,
-            景门: 0, 死门: 0, 惊门: 0, 开门: 0
-        };
-        let answers = [];
+    let answeredQuestions = []; // 已回答的题目
+    let scores = {
+        休门: 0, 生门: 0, 伤门: 0, 杜门: 0,
+        景门: 0, 死门: 0, 惊门: 0, 开门: 0
+    };
+    let usedQuestionIds = new Set(); // 已使用的问题ID
 
-        // 开始测试
-        function startTest() {
-            document.getElementById('coverPage').classList.add('hidden');
-            document.getElementById('testPage').classList.remove('hidden');
-            showQuestion(0);
+    // 生成题目唯一ID
+    function getQuestionId(question) {
+        return question.text.substring(0, 20);
+    }
+
+    // 获取所有题目
+    function getAllQuestions() {
+        let all = [];
+        for (let category in questionBank) {
+            all = all.concat(questionBank[category].map(q => ({
+                ...q,
+                category: category,
+                id: getQuestionId(q)
+            })));
         }
+        return all;
+    }
 
-        // 显示题目
-        function showQuestion(index) {
-            currentQuestion = index;
-            const q = questions[index];
-            document.getElementById('questionNum').textContent = `第 ${index + 1}/20 题`;
-            document.getElementById('questionText').textContent = q.text;
-            document.getElementById('progressFill').style.width = `${(index / 20) * 100}%`;
+    // 计算当前置信度
+    function calculateConfidence() {
+        let total = Object.values(scores).reduce((a, b) => a + b, 0);
+        if (total === 0) return 0;
 
-            const optionsHtml = q.options.map((opt, i) => `
-                <div class="option" onclick="selectOption('${opt.type}', ${i})">
-                    <div class="option-icon">${String.fromCharCode(65 + i)}</div>
-                    <div class="option-text">${opt.text}</div>
-                </div>
-            `).join('');
+        // 排序得分
+        let sortedScores = Object.entries(scores)
+            .sort((a, b) => b[1] - a[1]);
+        
+        let top1 = sortedScores[0];
+        let top2 = sortedScores[1];
+        let top3 = sortedScores[2];
+        
+        // 第一名与第二名的差距
+        let gap1vs2 = top1[1] - top2[1];
+        // 前三名占总分的比例
+        let top3Ratio = (top1[1] + top2[1] + top3[1]) / total;
+        
+        // 置信度 = 领先差距 + 集中度
+        let confidence = Math.min(1, (gap1vs2 / total) * 2 + top3Ratio * 0.3);
+        return confidence;
+    }
 
-            document.getElementById('options').innerHTML = optionsHtml;
-        }
-
-        // 选择选项
-        function selectOption(type, index) {
-            // 记录答案
-            answers.push({ question: currentQuestion, type: type });
-            scores[type]++;
-
-            // 高亮选中项
-            const options = document.querySelectorAll('.option');
-            options.forEach((opt, i) => {
-                opt.classList.remove('selected');
-                if (i === index) {
-                    opt.classList.add('selected');
-                }
+    // 获取当前需要区分的能量对
+    function getTopEnergyPairs() {
+        let sorted = Object.entries(scores)
+            .sort((a, b) => b[1] - a[1]);
+        
+        // 返回得分最接近的能量对（最需要区分的）
+        let pairs = [];
+        for (let i = 0; i < sorted.length - 1; i++) {
+            pairs.push({
+                energy1: sorted[i][0],
+                energy2: sorted[i + 1][0],
+                gap: sorted[i][1] - sorted[i + 1][1]
             });
-
-            // 延迟进入下一题
-            setTimeout(() => {
-                if (currentQuestion < questions.length - 1) {
-                    showQuestion(currentQuestion + 1);
-                } else {
-                    showLoading();
-                }
-            }, 300);
         }
+        
+        // 按差距排序，差距小的优先
+        pairs.sort((a, b) => a.gap - b.gap);
+        return pairs;
+    }
 
-        // 显示加载
-        function showLoading() {
-            document.getElementById('testPage').classList.add('hidden');
-            document.getElementById('loadingPage').classList.remove('hidden');
-
-            setTimeout(() => {
-                showResult();
-            }, 2000);
-        }
-
-        // 显示结果
-        function showResult() {
-            document.getElementById('loadingPage').classList.add('hidden');
-            document.getElementById('resultPage').classList.remove('hidden');
-
-            // 计算主能量
-            let maxScore = 0;
-            let mainType = '休门';
-            for (const type in scores) {
-                if (scores[type] > maxScore) {
-                    maxScore = scores[type];
-                    mainType = type;
-                }
+    // 自适应选题算法
+    function selectNextQuestion() {
+        let allQuestions = getAllQuestions();
+        let availableQuestions = allQuestions.filter(q => !usedQuestionIds.has(q.id));
+        
+        // 如果没有可用题目，返回null
+        if (availableQuestions.length === 0) return null;
+        
+        let totalAnswered = answeredQuestions.length;
+        
+        // 阶段1: 基础探测阶段（前5题）
+        if (totalAnswered < 5) {
+            // 优先使用基础题
+            let basicQuestions = availableQuestions.filter(q => q.category === '基础题');
+            if (basicQuestions.length > 0) {
+                // 随机选择一道基础题
+                return basicQuestions[Math.floor(Math.random() * basicQuestions.length)];
             }
+            return availableQuestions[0];
+        }
+        
+        // 阶段2: 聚焦区分阶段
+        let topPairs = getTopEnergyPairs();
+        
+        // 尝试找到能区分top能量对的题目
+        for (let pair of topPairs) {
+            let key = `${pair.energy1}_${pair.energy2}`;
+            let altKey = `${pair.energy2}_${pair.energy1}`;
+            
+            let pairQuestions = availableQuestions.filter(q => 
+                q.category === key || q.category === altKey
+            );
+            
+            if (pairQuestions.length > 0) {
+                return pairQuestions[Math.floor(Math.random() * pairQuestions.length)];
+            }
+        }
+        
+        // 如果没有针对能量对的题目，选择专项题
+        let专项Questions = availableQuestions.filter(q => 
+            !['基础题', '休门_生门', '伤门_杜门', '景门_死门', '惊门_开门'].includes(q.category)
+        );
+        
+        if (专项Questions.length > 0) {
+            return 专项Questions[Math.floor(Math.random() * 专项Questions.length)];
+        }
+        
+        // 最后用任何可用题
+        return availableQuestions[0];
+    }
 
-            const data = energyData[mainType];
+    // 开始测试
+    function startTest() {
+        document.getElementById('coverPage').classList.add('hidden');
+        document.getElementById('testPage').classList.remove('hidden');
+        
+        // 重置状态
+        scores = { 休门: 0, 生门: 0, 伤门: 0, 杜门: 0, 景门: 0, 死门: 0, 惊门: 0, 开门: 0 };
+        answeredQuestions = [];
+        usedQuestionIds.clear();
+        
+        showNextQuestion();
+    }
 
-            // 设置颜色变量
-            document.getElementById('mainCard').style.setProperty('--energy-color-1', data.color1);
-            document.getElementById('mainCard').style.setProperty('--energy-color-2', data.color2);
-            document.getElementById('mainCard').style.setProperty('--energy-glow', data.glow);
+    // 显示下一题
+    function showNextQuestion() {
+        let question = selectNextQuestion();
+        
+        if (!question) {
+            showLoading();
+            return;
+        }
+        
+        // 标记题目已使用
+        usedQuestionIds.add(question.id);
+        
+        let totalQuestions = answeredQuestions.length + 1;
+        let maxDisplay = MAX_QUESTIONS;
+        
+        // 检查是否达到结束条件
+        if (totalQuestions >= MIN_QUESTIONS) {
+            let confidence = calculateConfidence();
+            if (confidence >= CONFIDENCE_THRESHOLD || totalQuestions >= MAX_QUESTIONS) {
+                showLoading();
+                return;
+            }
+        }
+        
+        // 更新进度显示
+        document.getElementById('questionNum').textContent = `智能匹配中 · 第 ${totalQuestions} 题`;
+        document.getElementById('questionText').textContent = question.text;
+        document.getElementById('progressFill').style.width = `${(totalQuestions / MAX_QUESTIONS) * 100}%`;
+        
+        let optionsHtml = question.options.map((opt, i) => `
+            <div class="option" onclick="selectOption('${opt.type}', this)">
+                <div class="option-icon">${String.fromCharCode(65 + i)}</div>
+                <div class="option-text">${opt.text}</div>
+            </div>
+        `).join('');
+        
+        document.getElementById('options').innerHTML = optionsHtml;
+        
+        // 记录当前题目
+        window.currentQuestion = question;
+    }
 
-            // 填充内容
-            document.getElementById('resultType').textContent = `${data.emoji} ${mainType}`;
-            document.getElementById('resultSubtitle').textContent = data.desc;
-            document.getElementById('energyCircle').textContent = data.emoji;
-            document.getElementById('energyName').textContent = mainType;
-            document.getElementById('energyDesc').textContent = data.desc;
+    // 选择选项
+    function selectOption(type, element) {
+        // 记录答案
+        answeredQuestions.push({
+            question: window.currentQuestion,
+            answer: type
+        });
+        
+        // 更新分数
+        scores[type]++;
+        
+        // 高亮选中项
+        let options = document.querySelectorAll('.option');
+        options.forEach(opt => opt.classList.remove('selected'));
+        element.classList.add('selected');
+        
+        // 延迟进入下一题
+        setTimeout(() => {
+            showNextQuestion();
+        }, 300);
+    }
 
-            // 优势列表
-            const strengthHtml = data.strength.map(s => `
-                <li class="strength-item">
-                    <span class="item-icon">✅</span>
-                    <span>${s}</span>
-                </li>
-            `).join('');
-            document.getElementById('strengthList').innerHTML = strengthHtml;
+    // 显示加载
+    function showLoading() {
+        document.getElementById('testPage').classList.add('hidden');
+        document.getElementById('loadingPage').classList.remove('hidden');
+        
+        setTimeout(() => {
+            showResult();
+        }, 2000);
+    }
 
-            // 劣势列表
-            const weaknessHtml = data.weakness.map(w => `
-                <li class="weakness-item">
-                    <span class="item-icon">⚠️</span>
-                    <span>${w}</span>
-                </li>
-            `).join('');
-            document.getElementById('weaknessList').innerHTML = weaknessHtml;
-
-            // 小贴士
-            document.getElementById('tipContent').textContent = data.tip;
-
-            // 能量分布图
-            const chartColors = ['#4facfe', '#f7971e', '#fa709a', '#6a11cb', '#f77062', '#434343', '#a8edea', '#8e2de2'];
-            let chartHtml = '';
-            let i = 0;
-            for (const type in scores) {
-                const percentage = (scores[type] / 20) * 100;
-                chartHtml += `
-                    <div class="bar-item">
-                        <div class="bar-label">
-                            <span>${type}</span>
-                            <span>${scores[type]}分</span>
-                        </div>
-                        <div class="bar-track">
-                            <div class="bar-fill" style="width: 0%; background: ${chartColors[i]}"></div>
-                        </div>
+    // 显示结果
+    function showResult() {
+        document.getElementById('loadingPage').classList.add('hidden');
+        document.getElementById('resultPage').classList.remove('hidden');
+        
+        // 计算主能量和次能量
+        let sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+        let mainType = sorted[0][0];
+        let secondaryType = sorted[1][0];
+        
+        const data = energyData[mainType];
+        
+        // 设置颜色变量
+        document.getElementById('mainCard').style.setProperty('--energy-color-1', data.color1);
+        document.getElementById('mainCard').style.setProperty('--energy-color-2', data.color2);
+        document.getElementById('mainCard').style.setProperty('--energy-glow', data.glow);
+        
+        // 填充内容
+        document.getElementById('resultType').textContent = `${data.emoji} ${mainType} × ${secondaryType}`;
+        document.getElementById('resultSubtitle').textContent = `${data.desc} · 能量组合型`;
+        document.getElementById('energyCircle').textContent = data.emoji;
+        document.getElementById('energyName').textContent = mainType;
+        document.getElementById('energyDesc').textContent = data.desc;
+        
+        // 优势列表
+        const strengthHtml = data.strength.map(s => `
+            <li class="strength-item">
+                <span class="item-icon">✅</span>
+                <span>${s}</span>
+            </li>
+        `).join('');
+        document.getElementById('strengthList').innerHTML = strengthHtml;
+        
+        // 劣势列表
+        const weaknessHtml = data.weakness.map(w => `
+            <li class="weakness-item">
+                <span class="item-icon">⚠️</span>
+                <span>${w}</span>
+            </li>
+        `).join('');
+        document.getElementById('weaknessList').innerHTML = weaknessHtml;
+        
+        // 小贴士
+        document.getElementById('tipContent').textContent = data.tip;
+        
+        // 能量分布图
+        const chartColors = ['#4facfe', '#f7971e', '#fa709a', '#6a11cb', '#f77062', '#434343', '#a8edea', '#8e2de2'];
+        let chartHtml = '';
+        let i = 0;
+        let total = answeredQuestions.length || 1;
+        for (const type in scores) {
+            const percentage = (scores[type] / total) * 100;
+            chartHtml += `
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span>${type}</span>
+                        <span>${scores[type]}分</span>
                     </div>
-                `;
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 0%; background: ${chartColors[i]}"></div>
+                    </div>
+                </div>
+            `;
+            i++;
+        }
+        document.getElementById('energyChart').innerHTML = chartHtml;
+        
+        // 动画填充
+        setTimeout(() => {
+            const bars = document.querySelectorAll('.bar-fill');
+            i = 0;
+            for (const type in scores) {
+                const percentage = (scores[type] / total) * 100;
+                bars[i].style.width = `${percentage}%`;
                 i++;
             }
-            document.getElementById('energyChart').innerHTML = chartHtml;
+        }, 100);
+        
+        // 职业标签
+        const jobsHtml = data.jobs.map(job => `<span class="job-tag">${job}</span>`).join('');
+        document.getElementById('jobTags').innerHTML = jobsHtml;
+        
+        // 转发语
+        document.getElementById('shareQuote').textContent = `"${data.quote} 你也来试试？"`;
+        
+        // 转化内容
+        document.getElementById('convertTitle').textContent = data.convertTitle;
+        document.getElementById('convertDesc').textContent = data.convertDesc;
+        
+        // 更新弹窗内容
+        document.getElementById('hookType').textContent = `${data.emoji} ${mainType} × ${secondaryType}`;
+        
+        // 显示钩子弹窗
+        setTimeout(() => {
+            showHookModal();
+            startCountdown();
+        }, 500);
+    }
 
-            // 动画填充
-            setTimeout(() => {
-                const bars = document.querySelectorAll('.bar-fill');
-                i = 0;
-                for (const type in scores) {
-                    const percentage = (scores[type] / 20) * 100;
-                    bars[i].style.width = `${percentage}%`;
-                    i++;
-                }
-            }, 100);
+    // 分享转发
+    function shareToFriends() {
+        let sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+        let mainType = sorted[0][0];
+        let data = energyData[mainType];
+        
+        let text = `${data.quote} 你也来试试？戳链接测测你的能量属性→`;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('转发语已复制！去朋友圈或群里发吧~');
+        });
+    }
 
-            // 职业标签
-            const jobsHtml = data.jobs.map(job => `<span class="job-tag">${job}</span>`).join('');
-            document.getElementById('jobTags').innerHTML = jobsHtml;
+    // 重新测试
+    function retryTest() {
+        document.getElementById('resultPage').classList.add('hidden');
+        document.getElementById('hookModal').classList.add('hidden');
+        document.getElementById('inviteModal').classList.add('hidden');
+        document.getElementById('coverPage').classList.remove('hidden');
+    }
 
-            // 转发语
-            document.getElementById('shareQuote').textContent = `"${data.quote} 你也来试试？"`;
+    // 弹窗相关
+    let countdownInterval;
 
-            // 转化内容
-            document.getElementById('convertTitle').textContent = data.convertTitle;
-            document.getElementById('convertDesc').textContent = data.convertDesc;
-            document.getElementById('convertBtn').textContent = '👇 评论区扣「8」获取更多';
+    function showHookModal() {
+        document.getElementById('hookModal').style.display = 'flex';
+    }
 
-            // 显示钩子弹窗
-            setTimeout(() => {
-                showHookModal();
-                startCountdown();
-            }, 500);
-        }
+    function closeHookModal() {
+        document.getElementById('hookModal').style.display = 'none';
+        if (countdownInterval) clearInterval(countdownInterval);
+    }
 
-        // 分享转发
-        function shareToFriends() {
-            let maxScore = 0;
-            let mainType = '休门';
-            for (const type in scores) {
-                if (scores[type] > maxScore) {
-                    maxScore = scores[type];
-                    mainType = type;
-                }
+    function showInviteModal() {
+        closeHookModal();
+        document.getElementById('inviteModal').style.display = 'flex';
+        document.getElementById('inviteLink').value = window.location.href + '?ref=' + Date.now();
+        document.getElementById('inviteNormalContent').classList.remove('hidden');
+        document.getElementById('inviteSuccessContent').classList.add('hidden');
+    }
+
+    function closeInviteModal() {
+        document.getElementById('inviteModal').style.display = 'none';
+    }
+
+    function copyInviteLink() {
+        let link = document.getElementById('inviteLink').value;
+        navigator.clipboard.writeText(link).then(() => {
+            alert('邀请链接已复制！');
+        });
+    }
+
+    function payNow() {
+        window.open('高级感能量报告.html', '_blank');
+    }
+
+    function startCountdown() {
+        let time = 24 * 60 * 60; // 24小时
+        countdownInterval = setInterval(() => {
+            time--;
+            if (time <= 0) {
+                clearInterval(countdownInterval);
+                return;
             }
-
-            const data = energyData[mainType];
-            const shareText = `【八门识人能量测试】\n${data.emoji} 我的能量属性是「${mainType}」：${data.desc}\n\n${data.quote}\n\n你也来试试？评论区扣「8」领取测试~`;
-
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(shareText).then(() => {
-                    alert('✅ 转发语已复制！粘贴到朋友圈或发给朋友吧~');
-                }).catch(() => {
-                    alert('复制失败，请手动复制转发语');
-                });
-            } else {
-                alert('转发语：\n\n' + shareText);
-            }
-        }
-
-        // 重新测试
-        function retryTest() {
-            scores = { 休门: 0, 生门: 0, 伤门: 0, 杜门: 0, 景门: 0, 死门: 0, 惊门: 0, 开门: 0 };
-            answers = [];
-            currentQuestion = 0;
-            hookShown = false;
-            inviteCount = 0;
-
-            document.getElementById('resultPage').classList.add('hidden');
-            document.getElementById('coverPage').classList.remove('hidden');
-            closeHookModal();
-            closeInviteModal();
-        }
-
-        // ============ 钩子弹窗 ============
-        let inviteCount = 0;
-        let hookShown = false;
-
-        function showHookModal() {
-            if (hookShown) return;
-            hookShown = true;
-
-            let maxScore = 0;
-            let mainType = '休门';
-            for (const type in scores) {
-                if (scores[type] > maxScore) {
-                    maxScore = scores[type];
-                    mainType = type;
-                }
-            }
-
-            const data = energyData[mainType];
-            document.getElementById('hookType').textContent = `${data.emoji} ${mainType}`;
-            document.getElementById('hookModal').style.display = 'flex';
-        }
-
-        function closeHookModal() {
-            document.getElementById('hookModal').style.display = 'none';
-        }
-
-        function showInviteModal() {
-            closeHookModal();
-            document.getElementById('inviteModal').style.display = 'flex';
-            document.getElementById('inviteLink').value = window.location.href.split('?')[0] + '?from=invite&uid=' + Date.now();
-            updateInviteProgress();
-        }
-
-        function closeInviteModal() {
-            document.getElementById('inviteModal').style.display = 'none';
-        }
-
-        function updateInviteProgress() {
-            const target = 2;
-            const current = Math.min(inviteCount, target);
-            document.getElementById('inviteCount').textContent = `${current}/${target}`;
-            const percent = (current / target) * 100;
-            document.getElementById('inviteProgress').style.width = `${percent}%`;
-
-            if (current >= target) {
-                document.getElementById('inviteSuccess').style.display = 'block';
-                document.getElementById('invitePending').style.display = 'none';
-                // 免费解锁
-                setTimeout(() => {
-                    alert('🎉 恭喜！免费解锁完整报告！');
-                    closeInviteModal();
-                }, 500);
-            }
-        }
-
-        function copyInviteLink() {
-            const shareLink = window.location.href + '?from=invite';
-            navigator.clipboard.writeText(shareLink).then(() => {
-                alert('✅ 邀请链接已复制！分享给朋友吧~');
-            });
-        }
-
-        function payNow() {
-            // 打开支付页面或显示支付二维码
-            window.open('高级感能量报告.html', '_blank');
-        }
-
-        // ============ 倒计时 ============
-        function startCountdown() {
-            let hours = 23;
-            let minutes = 59;
-            let seconds = 59;
-
-            const countdown = setInterval(() => {
-                seconds--;
-                if (seconds < 0) {
-                    seconds = 59;
-                    minutes--;
-                }
-                if (minutes < 0) {
-                    minutes = 59;
-                    hours--;
-                }
-                if (hours < 0) {
-                    clearInterval(countdown);
-                    document.getElementById('hookCountdown').textContent = '已过期';
-                    return;
-                }
-                document.getElementById('hookCountdown').textContent =
-                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-            }, 1000);
-        }
+            let h = Math.floor(time / 3600);
+            let m = Math.floor((time % 3600) / 60);
+            let s = time % 60;
+            document.getElementById('hookCountdown').textContent = 
+                `限时优惠：${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+        }, 1000);
+    }
     </script>
-
-    <!-- 钩子弹窗 -->
-    <div id="hookModal" class="modal-overlay">
-        <div class="hook-modal">
-            <div class="hook-header">
-                <span class="hook-close" onclick="closeHookModal()">✕</span>
-            </div>
-            <div class="hook-content">
-                <div class="hook-celebration">🎉 恭喜你测完了！</div>
-                <div class="hook-type-label">你的能量类型：</div>
-                <div id="hookType" class="hook-type"></div>
-
-                <div class="hook-divider"></div>
-                <div class="hook-basic-label">基础报告已生成</div>
-                <div class="hook-basic-desc">（包含类型+优势+踩坑提示）</div>
-
-                <div class="hook-full-label">【完整报告】解锁更多内容：</div>
-                <ul class="hook-full-list">
-                    <li>✓ 与8种能量的相处之道</li>
-                    <li>✓ 感情配对深度分析</li>
-                    <li>✓ 2026能量发展趋势</li>
-                    <li>✓ 每日能量提升清单</li>
-                </ul>
-
-                <div class="hook-price">
-                    <span class="hook-price-original">原价 ¥99</span>
-                    <span class="hook-price-now">现价 ¥29.9</span>
-                </div>
-
-                <div class="hook-countdown">
-                    ⏰ 限时优惠：<span id="hookCountdown"></span> 后恢复原价
-                </div>
-
-                <div class="hook-buttons">
-                    <button class="hook-btn hook-btn-invite" onclick="showInviteModal()">
-                        🎁 邀请好友解锁免费
-                    </button>
-                    <button class="hook-btn hook-btn-pay" onclick="payNow()">
-                        💰 立即购买
-                    </button>
-                </div>
-
-                <div class="hook-tip">仅需一杯奶茶钱，换一生受益</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 邀请弹窗 -->
-    <div id="inviteModal" class="modal-overlay">
-        <div class="invite-modal">
-            <div class="invite-header">
-                <span class="invite-close" onclick="closeInviteModal()">✕</span>
-            </div>
-            <div class="invite-content">
-                <div class="invite-title">🎁 完成邀请，免费解锁完整报告！</div>
-                <div class="invite-subtitle">只需邀请 <strong>2</strong> 位好友完成测试<br>你俩都能获得完整报告！</div>
-
-                <div class="invite-link-section">
-                    <div class="invite-link-label">你的专属邀请链接：</div>
-                    <div class="invite-link-box">
-                        <input type="text" id="inviteLink" class="invite-link-input" readonly>
-                        <button class="invite-copy-btn" onclick="copyInviteLink()">📋 复制</button>
-                    </div>
-                </div>
-
-                <div id="invitePending" class="invite-progress-section">
-                    <div class="invite-count-text">已邀请：<span id="inviteCount">0/2</span> 人</div>
-                    <div class="invite-progress-bar">
-                        <div id="inviteProgress" class="invite-progress-fill"></div>
-                    </div>
-                    <div class="invite-hint">差的朋友快来帮忙解锁~</div>
-                </div>
-
-                <div id="inviteSuccess" class="invite-success" style="display:none;">
-                    <div class="invite-success-icon">🎉</div>
-                    <div class="invite-success-text">已完成邀请！<br>免费解锁完整报告！</div>
-                </div>
-
-                <div class="invite-divider">────────────────</div>
-
-                <div class="invite-pay-section">
-                    <div class="invite-pay-text">或直接购买：</div>
-                    <button class="invite-pay-btn" onclick="payNow()">💰 ¥29.9 立即解锁</button>
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
 </html>
