@@ -124,6 +124,75 @@
             color: rgba(255,255,255,0.5);
         }
 
+        /* 姓名性别输入 */
+        .user-info-form {
+            background: rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 8px;
+            display: block;
+            text-align: left;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            border-color: #667eea;
+            background: rgba(255,255,255,0.15);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255,255,255,0.4);
+        }
+
+        .gender-select {
+            display: flex;
+            gap: 10px;
+        }
+
+        .gender-option {
+            flex: 1;
+            padding: 12px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            color: rgba(255,255,255,0.7);
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .gender-option:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        .gender-option.selected {
+            background: rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+            color: #fff;
+        }
+
         /* 测试页 */
         .test-page {
             display: none;
@@ -417,20 +486,110 @@
             transform: scale(1.05);
         }
 
+        /* 分享图片生成 */
+        .share-image-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 15px 0;
+            border: 1px dashed rgba(255,255,255,0.2);
+        }
+
+        .share-image-title {
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .share-image-preview {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .share-image-preview canvas {
+            border-radius: 12px;
+            max-width: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .share-image-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border: none;
+            padding: 14px 30px;
+            border-radius: 25px;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .share-image-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.4);
+        }
+
+        .share-image-hint {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 12px;
+        }
+
         /* 转化卡片 */
         .convert-card {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 107, 107, 0.2) 100%);
             border: 2px solid rgba(255, 215, 0, 0.3);
             border-radius: 20px;
-            padding: 25px;
+            padding: 0;
             text-align: center;
             margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .convert-header {
+            background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+            padding: 15px;
+            color: #1a1a2e;
+        }
+
+        .convert-header-tag {
+            display: inline-block;
+            background: rgba(0,0,0,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .convert-header-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .convert-header-sub {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .convert-body {
+            padding: 20px;
         }
 
         .convert-title {
             font-size: 18px;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             color: #ffd700;
         }
 
@@ -439,6 +598,82 @@
             color: rgba(255,255,255,0.8);
             margin-bottom: 15px;
             line-height: 1.6;
+        }
+
+        .convert-features {
+            text-align: left;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+        }
+
+        .convert-feature-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            font-size: 14px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .convert-feature-icon {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        .convert-feature-text {
+            flex: 1;
+        }
+
+        .convert-price {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .convert-price-original {
+            font-size: 16px;
+            color: rgba(255,255,255,0.4);
+            text-decoration: line-through;
+        }
+
+        .convert-price-current {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        .convert-social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 12px 0;
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        .convert-social-avatars {
+            display: flex;
+        }
+
+        .convert-social-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid #1a1a2e;
+            margin-left: -8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+        }
+
+        .convert-social-avatar:first-child {
+            margin-left: 0;
         }
 
         .convert-btn {
@@ -452,11 +687,29 @@
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+            width: 100%;
+            margin-top: 10px;
         }
 
         .convert-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(255, 215, 0, 0.4);
+        }
+
+        .convert-urgency {
+            margin-top: 12px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .convert-urgency-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            margin-right: 6px;
+            animation: pulse 1s infinite;
         }
 
         /* 小贴士 */
@@ -506,6 +759,187 @@
 
         .retry-btn:hover {
             background: rgba(255,255,255,0.15);
+        }
+
+        /* 生辰输入页 */
+        .birth-page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .birth-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .birth-title h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            background: linear-gradient(120deg, #fff 0%, #a8edea 50%, #fed6e3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .birth-title p {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+        }
+        
+        /* 滚轮选择器 */
+        .picker-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px 0;
+            padding: 20px 0;
+        }
+        
+        .picker-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            max-width: 80px;
+        }
+        
+        .picker-label {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 10px;
+        }
+        
+        .picker-wheel {
+            position: relative;
+            width: 70px;
+            height: 180px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .picker-wheel-inner {
+            position: absolute;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+        
+        .picker-item {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: rgba(255,255,255,0.4);
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s;
+        }
+        
+        .picker-item.active {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .picker-highlight {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 60px;
+            transform: translateY(-50%);
+            border: 2px solid rgba(255,215,0,0.5);
+            border-radius: 10px;
+            pointer-events: none;
+            background: rgba(255,215,0,0.1);
+        }
+        
+        .picker-shadow-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: linear-gradient(to bottom, rgba(26,26,46,1), rgba(26,26,46,0));
+            pointer-events: none;
+        }
+        
+        .picker-shadow-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: linear-gradient(to top, rgba(26,26,46,1), rgba(26,26,46,0));
+            pointer-events: none;
+        }
+        
+        /* 时辰选择器 */
+        .shichen-picker {
+            margin-top: 20px;
+        }
+        
+        .shichen-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .shichen-item {
+            padding: 12px 8px;
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .shichen-item .shichen-name {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+        
+        .shichen-item .shichen-time {
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .shichen-item.active {
+            background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,107,107,0.2));
+            border-color: rgba(255,215,0,0.5);
+        }
+        
+        .shichen-item.active .shichen-name {
+            color: #ffd700;
+        }
+        
+        .birth-confirm-btn {
+            width: 100%;
+            padding: 16px;
+            margin-top: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .birth-confirm-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .birth-tip {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+            margin-top: 15px;
         }
 
         /* 职业推荐 */
@@ -623,19 +1057,56 @@
 
         .hook-price {
             margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
         }
 
         .hook-price-original {
             font-size: 14px;
             color: rgba(255,255,255,0.4);
             text-decoration: line-through;
-            margin-right: 10px;
         }
 
         .hook-price-now {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
             color: #e94560;
+        }
+
+        .hook-social-proof {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin: 10px 0;
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.05);
+            padding: 8px 12px;
+            border-radius: 20px;
+        }
+
+        .hook-social-avatars {
+            display: flex;
+        }
+
+        .hook-social-avatar {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #1a1a2e;
+            margin-left: -6px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+        }
+
+        .hook-social-avatar:first-child {
+            margin-left: 0;
         }
 
         .hook-countdown {
@@ -726,6 +1197,54 @@
             margin-bottom: 20px;
         }
 
+        .invite-share-options {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .share-option-btn {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .share-option-btn.active {
+            background: rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+            color: #fff;
+        }
+
+        .share-option-btn:hover {
+            background: rgba(102, 126, 234, 0.2);
+        }
+
+        .invite-link-content {
+            display: block;
+        }
+
+        .invite-link-content.hidden {
+            display: none;
+        }
+
+        .invite-image-content {
+            display: none;
+        }
+
+        .invite-image-content.active {
+            display: block;
+        }
+
         .invite-link-label {
             font-size: 12px;
             color: rgba(255,255,255,0.6);
@@ -756,6 +1275,113 @@
             color: white;
             cursor: pointer;
             font-size: 12px;
+        }
+
+        /* 图片分享样式 */
+        .invite-image-section {
+            margin-bottom: 20px;
+        }
+
+        .invite-image-box {
+            position: relative;
+            background: rgba(255,255,255,0.1);
+            border: 2px dashed rgba(102, 126, 234, 0.5);
+            border-radius: 12px;
+            padding: 15px;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .invite-image-box:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .invite-image-box.has-image {
+            padding: 10px;
+        }
+
+        .invite-image-placeholder {
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .invite-image-placeholder-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .invite-preview-image {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 8px;
+        }
+
+        .invite-image-hint {
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+            margin-top: 8px;
+        }
+
+        .invite-image-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        .invite-image-btn {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .invite-upload-btn {
+            background: rgba(102, 126, 234, 0.3);
+            color: #fff;
+        }
+
+        .invite-upload-btn:hover {
+            background: rgba(102, 126, 234, 0.5);
+        }
+
+        .invite-remove-btn {
+            background: rgba(255, 100, 100, 0.3);
+            color: #ff8888;
+        }
+
+        .invite-remove-btn:hover {
+            background: rgba(255, 100, 100, 0.5);
+        }
+
+        .invite-use-image-btn {
+            background: #667eea;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+
+        .invite-use-image-btn:hover {
+            background: #7b8ff0;
+        }
+
+        .invite-use-image-btn:disabled {
+            background: rgba(255,255,255,0.2);
+            cursor: not-allowed;
         }
 
         .invite-progress-section {
@@ -832,6 +1458,42 @@
             cursor: pointer;
         }
 
+        /* 付款滚动通知 */
+        .pay-notice-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, #ff6b6b 0%, #feca57 100%);
+            color: #fff;
+            padding: 8px 0;
+            font-size: 13px;
+            z-index: 9999;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .pay-notice-track {
+            display: flex;
+            flex-direction: column;
+            animation: scrollNotice 8s linear infinite;
+        }
+
+        .pay-notice-item {
+            white-space: nowrap;
+            padding: 2px 15px;
+            text-align: center;
+        }
+
+        @keyframes scrollNotice {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        .pay-notice-bar.hidden {
+            display: none;
+        }
+
         /* 底部 */
         .footer {
             text-align: center;
@@ -872,6 +1534,13 @@
     </style>
 </head>
 <body>
+    <!-- 付款滚动通知 -->
+    <div class="pay-notice-bar" id="payNoticeBar">
+        <div class="pay-notice-track" id="payNoticeTrack">
+            <!-- JS动态生成 -->
+        </div>
+    </div>
+
     <!-- 封面页 -->
     <div id="coverPage" class="container cover-page">
         <div class="cover-badge">🔥 3万+人在测 · 准到离谱</div>
@@ -895,8 +1564,75 @@
                 <div class="stat-label">完全免费</div>
             </div>
         </div>
-        <button class="start-btn" onclick="startTest()">开始测试你的能量 →</button>
+        
+        <!-- 用户信息输入 -->
+        <div class="user-info-form">
+            <div class="form-group">
+                <label class="form-label">✨ 先告诉我你的名字</label>
+                <input type="text" class="form-input" id="userName" placeholder="输入你的姓名" maxlength="10">
+            </div>
+            <div class="form-group">
+                <label class="form-label">💫 你的性别</label>
+                <div class="gender-select">
+                    <div class="gender-option" data-gender="男" onclick="selectGender(this)">👨 男</div>
+                    <div class="gender-option" data-gender="女" onclick="selectGender(this)">👩 女</div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="start-btn" onclick="showBirthPage()">开始测试你的能量 →</button>
         <p class="cover-tip">完全免费 · 易学解读 · 结果仅自己可见</p>
+    </div>
+
+    <!-- 生辰输入页 -->
+    <div id="birthPage" class="container birth-page">
+        <div class="birth-title">
+            <h2>📅 请选择你的出生时间</h2>
+            <p>易学解读需要准确的时空信息</p>
+        </div>
+        
+        <!-- 年月日选择 -->
+        <div class="picker-container">
+            <div class="picker-column">
+                <div class="picker-label">年</div>
+                <div class="picker-wheel" id="yearWheel">
+                    <div class="picker-shadow-top"></div>
+                    <div class="picker-wheel-inner" id="yearInner"></div>
+                    <div class="picker-highlight"></div>
+                    <div class="picker-shadow-bottom"></div>
+                </div>
+            </div>
+            <div class="picker-column">
+                <div class="picker-label">月</div>
+                <div class="picker-wheel" id="monthWheel">
+                    <div class="picker-shadow-top"></div>
+                    <div class="picker-wheel-inner" id="monthInner"></div>
+                    <div class="picker-highlight"></div>
+                    <div class="picker-shadow-bottom"></div>
+                </div>
+            </div>
+            <div class="picker-column">
+                <div class="picker-label">日</div>
+                <div class="picker-wheel" id="dayWheel">
+                    <div class="picker-shadow-top"></div>
+                    <div class="picker-wheel-inner" id="dayInner"></div>
+                    <div class="picker-highlight"></div>
+                    <div class="picker-shadow-bottom"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 时辰选择 -->
+        <div class="shichen-picker">
+            <div class="birth-title" style="margin-top: 20px;">
+                <h2>🕐 请选择出生时辰</h2>
+                <p>时辰对应两个小时</p>
+            </div>
+            <div class="shichen-grid" id="shichenGrid"></div>
+        </div>
+        
+        <button class="birth-confirm-btn" onclick="confirmBirth()">确认并开始测试 →</button>
+        <p class="birth-tip">信息仅用于能量分析，绝不泄露</p>
     </div>
 
     <!-- 测试页 -->
@@ -979,11 +1715,77 @@
             </button>
         </div>
 
+        <!-- 分享图片生成 -->
+        <div class="share-image-section">
+            <div class="share-image-title">📱 生成分享图片</div>
+            <div class="share-image-preview">
+                <canvas id="shareCanvas" width="600" height="800"></canvas>
+            </div>
+            <button class="share-image-btn" onclick="downloadShareImage()">
+                📥 下载分享图片
+            </button>
+            <p class="share-image-hint">长按保存图片，发朋友圈让朋友扫码测试</p>
+        </div>
+
         <!-- 转化卡片 -->
         <div class="convert-card">
-            <div id="convertTitle" class="convert-title"></div>
-            <p id="convertDesc" class="convert-desc"></p>
-            <button class="convert-btn" onclick="showHookModal()">🎁 解锁完整报告</button>
+            <div class="convert-header">
+                <div class="convert-header-tag">🌟 专属深度分析报告</div>
+                <div class="convert-header-title">你的能量完整解读</div>
+                <div class="convert-header-sub">包含56种组合 · 深度分析</div>
+            </div>
+            <div class="convert-body">
+                <div id="convertTitle" class="convert-title"></div>
+                <p id="convertDesc" class="convert-desc"></p>
+                
+                <!-- 报告包含内容 -->
+                <div class="convert-features">
+                    <div class="convert-feature-item">
+                        <span class="convert-feature-icon">🔮</span>
+                        <span class="convert-feature-text">主副能量深度配对分析</span>
+                    </div>
+                    <div class="convert-feature-item">
+                        <span class="convert-feature-icon">💼</span>
+                        <span class="convert-feature-text">专属职业发展路线图</span>
+                    </div>
+                    <div class="convert-feature-item">
+                        <span class="convert-feature-icon">💕</span>
+                        <span class="convert-feature-text">情感关系优化建议</span>
+                    </div>
+                    <div class="convert-feature-item">
+                        <span class="convert-feature-icon">💰</span>
+                        <span class="convert-feature-text">财富能量激活指南</span>
+                    </div>
+                    <div class="convert-feature-item">
+                        <span class="convert-feature-icon">🎯</span>
+                        <span class="convert-feature-text">人际关系提升策略</span>
+                    </div>
+                </div>
+                
+                <!-- 价格 -->
+                <div class="convert-price">
+                    <span class="convert-price-original">¥99</span>
+                    <span class="convert-price-current">¥29.9</span>
+                </div>
+                
+                <!-- 社会证明 -->
+                <div class="convert-social">
+                    <div class="convert-social-avatars">
+                        <div class="convert-social-avatar">😊</div>
+                        <div class="convert-social-avatar">😎</div>
+                        <div class="convert-social-avatar">🤗</div>
+                        <div class="convert-social-avatar">🥰</div>
+                    </div>
+                    <span>已有 <strong style="color:#ffd700">1286</strong> 人获取报告</span>
+                </div>
+                
+                <button class="convert-btn" onclick="showHookModal()">🎁 解锁完整报告</button>
+                
+                <div class="convert-urgency">
+                    <span class="convert-urgency-dot"></span>
+                    限时特惠，随时恢复原价
+                </div>
+            </div>
         </div>
 
         <button class="retry-btn" onclick="retryTest()">🔄 重新测试</button>
@@ -1006,19 +1808,35 @@
                 <div class="hook-divider"></div>
                 <div class="hook-basic-label">基础报告已生成</div>
                 <div class="hook-basic-desc">包含能量分布图和简单解读</div>
-                <div class="hook-full-label">解锁完整报告（¥29.9）</div>
-                <ul class="hook-full-list">
-                    <li>✅ 56种能量组合深度解读</li>
-                    <li>✅ 完整能量配对分析</li>
-                    <li>✅ 职业发展建议</li>
-                    <li>✅ 感情财运指引</li>
-                    <li>✅ 丁老师一对一答疑</li>
-                </ul>
+                
+                <div style="background: linear-gradient(135deg, rgba(233, 69, 96, 0.3), rgba(255, 107, 107, 0.3)); border-radius: 12px; padding: 15px; margin: 15px 0;">
+                    <div style="font-size: 12px; color: #ffd700; margin-bottom: 8px;">🌟 解锁完整报告（限时特惠）</div>
+                    <ul class="hook-full-list" style="text-align: left;">
+                        <li>✅ 56种能量组合深度解读</li>
+                        <li>✅ 完整能量配对分析</li>
+                        <li>✅ 职业发展建议</li>
+                        <li>✅ 感情财运指引</li>
+                        <li>✅ 丁老师一对一答疑</li>
+                    </ul>
+                </div>
+                
+                <!-- 社会证明 -->
+                <div class="hook-social-proof">
+                    <div class="hook-social-avatars">
+                        <div class="hook-social-avatar">😊</div>
+                        <div class="hook-social-avatar">😎</div>
+                        <div class="hook-social-avatar">🤗</div>
+                        <div class="hook-social-avatar">🥰</div>
+                        <div class="hook-social-avatar">😁</div>
+                    </div>
+                    <span><strong style="color:#ffd700">1286</strong> 人已获取报告</span>
+                </div>
+                
                 <div class="hook-price">
                     <span class="hook-price-original">¥99</span>
                     <span class="hook-price-now">¥29.9</span>
                 </div>
-                <div id="hookCountdown" class="hook-countdown">限时优惠：23:59:47</div>
+                <div id="hookCountdown" class="hook-countdown">⏰ 限时特惠，随时恢复原价</div>
                 
                 <!-- 解锁方式一：邀请裂变 -->
                 <div class="hook-buttons">
@@ -1070,11 +1888,50 @@
                         每邀请1位好友完成测试<br>
                         你即可免费解锁完整报告
                     </div>
-                    <div class="invite-link-section">
-                        <div class="invite-link-label">你的专属邀请链接</div>
-                        <div class="invite-link-box">
-                            <input id="inviteLink" class="invite-link-input" type="text" readonly>
-                            <button class="invite-copy-btn" onclick="copyInviteLink()">复制</button>
+                    
+                    <!-- 分享方式切换 -->
+                    <div class="invite-share-options">
+                        <button class="share-option-btn active" id="linkShareBtn" onclick="switchShareMode('link')">
+                            🔗 分享链接
+                        </button>
+                        <button class="share-option-btn" id="imageShareBtn" onclick="switchShareMode('image')">
+                            🖼️ 分享图片
+                        </button>
+                    </div>
+                    
+                    <!-- 链接分享内容 -->
+                    <div class="invite-link-content" id="inviteLinkContent">
+                        <div class="invite-link-section">
+                            <div class="invite-link-label">你的专属邀请链接</div>
+                            <div class="invite-link-box">
+                                <input id="inviteLink" class="invite-link-input" type="text" readonly>
+                                <button class="invite-copy-btn" onclick="copyInviteLink()">复制</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 图片分享内容 -->
+                    <div class="invite-image-content" id="inviteImageContent">
+                        <div class="invite-image-section">
+                            <div class="invite-link-label">上传你的二维码/图片</div>
+                            <div class="invite-image-box" id="inviteImageBox" onclick="document.getElementById('inviteImageInput').click()">
+                                <input type="file" id="inviteImageInput" accept="image/*" style="display:none" onchange="handleInviteImageUpload(event)">
+                                <div class="invite-image-placeholder" id="inviteImagePlaceholder">
+                                    <div class="invite-image-placeholder-icon">📷</div>
+                                    <div>点击上传图片</div>
+                                    <div style="font-size:11px;margin-top:4px;color:rgba(255,255,255,0.3)">支持二维码、宣传图等</div>
+                                </div>
+                                <img id="invitePreviewImage" class="invite-preview-image" style="display:none">
+                            </div>
+                            <div class="invite-image-hint">上传后可让好友扫码或保存图片</div>
+                            <div class="invite-image-actions" id="inviteImageActions" style="display:none">
+                                <button class="invite-image-btn invite-upload-btn" onclick="document.getElementById('inviteImageInput').click()">
+                                    重新上传
+                                </button>
+                                <button class="invite-image-btn invite-remove-btn" onclick="removeInviteImage()">
+                                    删除
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div class="invite-progress-section">
@@ -1110,6 +1967,87 @@
     // ============================================
     // 自适应测试系统 - 智能选题算法
     // ============================================
+
+
+    // 用户信息
+    let userName = '';
+    let userGender = '';
+
+    // 性别选择
+    function selectGender(element) {
+        document.querySelectorAll('.gender-option').forEach(el => el.classList.remove('selected'));
+        element.classList.add('selected');
+        userGender = element.dataset.gender;
+    }
+
+    // 付款滚动通知模板
+    const payNoticeTemplates = [
+        '🔥 {name}{gender} 刚刚购买了深度报告',
+        '💰 {name}{gender} 3分钟前已完成购买',
+        '✨ {name}{gender} 刚刚解锁完整报告',
+        '🎉 {name}{gender} 5分钟前已购买',
+        '⭐ {name}{gender} 刚刚完成付款',
+        '💎 {name}{gender} 2分钟前已购买报告',
+        '🌟 {name}{gender} 刚刚解锁高级分析',
+        '📱 {name}{gender} 1分钟前已完成购买',
+        '🎯 {name}{gender} 刚刚获得完整报告',
+        '🔥 {name}{gender} 4分钟前已付款',
+        '✨ {name}{gender} 刚刚购买深度咨询',
+        '💰 {name}{gender} 6分钟前已完成购买',
+    ];
+
+    // 其他用户姓名池（用于显示）
+    const otherNames = [
+        {name: '张', gender: '女士'}, {name: '李', gender: '先生'}, 
+        {name: '王', gender: '女士'}, {name: '刘', gender: '先生'},
+        {name: '陈', gender: '女士'}, {name: '周', gender: '先生'},
+        {name: '赵', gender: '女士'}, {name: '孙', gender: '先生'},
+        {name: '吴', gender: '女士'}, {name: '郑', gender: '先生'},
+        {name: '钱', gender: '女士'}, {name: '杨', gender: '先生'},
+    ];
+
+    function initPayNotice() {
+        const track = document.getElementById('payNoticeTrack');
+        
+        // 生成通知内容
+        let notices = [];
+        
+        // 如果用户已输入姓名，第一条用用户的
+        const savedName = sessionStorage.getItem('userName');
+        const savedGender = sessionStorage.getItem('userGender');
+        if (savedName) {
+            const genderText = savedGender === '男' ? '先生' : '女士';
+            notices.push(`🔥 ${savedName}${genderText} 刚刚购买了深度报告`);
+        }
+        
+        // 其他通知用随机姓名
+        otherNames.forEach(item => {
+            const template = payNoticeTemplates[Math.floor(Math.random() * payNoticeTemplates.length)];
+            notices.push(template.replace('{name}', item.name).replace('{gender}', item.gender));
+        });
+        
+        // 打乱顺序
+        notices.sort(() => Math.random() - 0.5);
+        
+        // 生成双倍内容确保无缝滚动
+        let html = '';
+        for (let i = 0; i < 2; i++) {
+            notices.forEach(notice => {
+                html += `<div class="pay-notice-item">${notice}</div>`;
+            });
+        }
+        track.innerHTML = html;
+        
+        // 随机显示或隐藏
+        if (Math.random() > 0.3) {
+            document.getElementById('payNoticeBar').classList.remove('hidden');
+        } else {
+            document.getElementById('payNoticeBar').classList.add('hidden');
+        }
+    }
+
+    // 页面加载时初始化
+    initPayNotice();
 
     // 能量类型详细数据
     const energyData = {
@@ -2078,6 +3016,255 @@
         });
     }
 
+    // 生成分享图片
+    function generateShareImage() {
+        let sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+        let mainType = sorted[0][0];
+        let secondaryType = sorted[1][0];
+        let data = energyData[mainType];
+        
+        const canvas = document.getElementById('shareCanvas');
+        const ctx = canvas.getContext('2d');
+        const width = 600;
+        const height = 800;
+        
+        // 清除画布
+        ctx.clearRect(0, 0, width, height);
+        
+        // 绘制背景渐变
+        const gradient = ctx.createLinearGradient(0, 0, width, height);
+        gradient.addColorStop(0, '#1a1a2e');
+        gradient.addColorStop(0.5, '#16213e');
+        gradient.addColorStop(1, '#0f3460');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+        
+        // 顶部装饰圆形
+        ctx.beginPath();
+        ctx.arc(300, -50, 150, 0, Math.PI * 2);
+        const topGradient = ctx.createRadialGradient(300, -50, 0, 300, -50, 150);
+        topGradient.addColorStop(0, 'rgba(102, 126, 234, 0.3)');
+        topGradient.addColorStop(1, 'rgba(102, 126, 234, 0)');
+        ctx.fillStyle = topGradient;
+        ctx.fill();
+        
+        // 标题
+        ctx.fillStyle = '#ffd700';
+        ctx.font = 'bold 42px "PingFang SC", "Microsoft YaHei", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('🔮 八门识人能量测试', 300, 100);
+        
+        // 分隔线
+        ctx.strokeStyle = 'rgba(255, 215, 0, 0.3)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(80, 130);
+        ctx.lineTo(520, 130);
+        ctx.stroke();
+        
+        // 能量类型圆形
+        const centerX = 300;
+        const centerY = 300;
+        const circleRadius = 120;
+        
+        // 外圈光晕
+        const glowGradient = ctx.createRadialGradient(centerX, centerY, circleRadius * 0.8, centerX, centerY, circleRadius * 1.3);
+        glowGradient.addColorStop(0, data.color1);
+        glowGradient.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, circleRadius * 1.3, 0, Math.PI * 2);
+        ctx.fillStyle = glowGradient;
+        ctx.fill();
+        
+        // 主圆形
+        const circleGradient = ctx.createLinearGradient(centerX - circleRadius, centerY - circleRadius, centerX + circleRadius, centerY + circleRadius);
+        circleGradient.addColorStop(0, data.color1);
+        circleGradient.addColorStop(1, data.color2);
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, circleRadius, 0, Math.PI * 2);
+        ctx.fillStyle = circleGradient;
+        ctx.fill();
+        
+        // 能量emoji
+        ctx.font = '80px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(data.emoji, centerX, centerY - 20);
+        
+        // 能量名称
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 36px "PingFang SC", "Microsoft YaHei", sans-serif';
+        ctx.fillText(mainType, centerX, centerY + 70);
+        
+        // 能量类型标签
+        ctx.font = '24px "PingFang SC", "Microsoft YaHei", sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,0.8)';
+        ctx.fillText(data.desc, centerX, centerY + 110);
+        
+        // 组合标签
+        ctx.font = '28px "PingFang SC", "Microsoft YaHei", sans-serif';
+        ctx.fillStyle = '#ffd700';
+        ctx.fillText(`${mainType} × ${secondaryType} 组合`, centerX, 500);
+        
+        // 引言气泡
+        ctx.fillStyle = 'rgba(255,255,255,0.1)';
+        roundRect(ctx, 50, 540, 500, 100, 20, true, false);
+        
+        ctx.font = 'italic 26px "PingFang SC", "Microsoft YaHei", sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,0.9)';
+        ctx.fillText(`"${data.quote}"`, 300, 580);
+        ctx.font = '22px "PingFang SC", "Microsoft YaHei", sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,0.6)';
+        ctx.fillText('你也来试试？', 300, 620);
+        
+        // 二维码提示区域
+        ctx.fillStyle = 'rgba(255,255,255,0.05)';
+        roundRect(ctx, 50, 680, 500, 80, 15, true, false);
+        
+        ctx.font = '22px "PingFang SC", "Microsoft YaHei", sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,0.7)';
+        ctx.fillText('长按识别二维码 · 测测你的能量属性', 300, 720);
+        
+        // 底部装饰
+        ctx.font = '16px "PingFang SC", "Microsoft YaHei", sans-serif';
+        ctx.fillStyle = 'rgba(255,255,255,0.4)';
+        ctx.fillText('预见丁老师 · 八门识人能量测试', 300, 770);
+    }
+    
+    // 圆角矩形辅助函数
+    function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+        ctx.beginPath();
+        ctx.moveTo(x + radius, y);
+        ctx.lineTo(x + width - radius, y);
+        ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+        ctx.lineTo(x + width, y + height - radius);
+        ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        ctx.lineTo(x + radius, y + height);
+        ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+        ctx.lineTo(x, y + radius);
+        ctx.quadraticCurveTo(x, y, x + radius, y);
+        ctx.closePath();
+        if (fill) ctx.fill();
+        if (stroke) ctx.stroke();
+    }
+    
+    // 下载分享图片
+    function downloadShareImage() {
+        generateShareImage();
+        const canvas = document.getElementById('shareCanvas');
+        const link = document.createElement('a');
+        link.download = '我的能量类型.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        
+        // 提示保存成功
+        alert('图片已保存！去发朋友圈让朋友测试吧~');
+    }
+    
+    // 在showResult中调用生成图片
+    function showResult() {
+        document.getElementById('loadingPage').classList.add('hidden');
+        document.getElementById('resultPage').classList.remove('hidden');
+        
+        // 计算主能量和次能量
+        let sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+        let mainType = sorted[0][0];
+        let secondaryType = sorted[1][0];
+        
+        const data = energyData[mainType];
+        
+        // 设置颜色变量
+        document.getElementById('mainCard').style.setProperty('--energy-color-1', data.color1);
+        document.getElementById('mainCard').style.setProperty('--energy-color-2', data.color2);
+        document.getElementById('mainCard').style.setProperty('--energy-glow', data.glow);
+        
+        // 填充内容
+        document.getElementById('resultType').textContent = `${data.emoji} ${mainType} × ${secondaryType}`;
+        document.getElementById('resultSubtitle').textContent = `${data.desc} · 能量组合型`;
+        document.getElementById('energyCircle').textContent = data.emoji;
+        document.getElementById('energyName').textContent = mainType;
+        document.getElementById('energyDesc').textContent = data.desc;
+        
+        // 优势列表
+        const strengthHtml = data.strength.map(s => `
+            <li class="strength-item">
+                <span class="item-icon">✅</span>
+                <span>${s}</span>
+            </li>
+        `).join('');
+        document.getElementById('strengthList').innerHTML = strengthHtml;
+        
+        // 劣势列表
+        const weaknessHtml = data.weakness.map(w => `
+            <li class="weakness-item">
+                <span class="item-icon">⚠️</span>
+                <span>${w}</span>
+            </li>
+        `).join('');
+        document.getElementById('weaknessList').innerHTML = weaknessHtml;
+        
+        // 小贴士
+        document.getElementById('tipContent').textContent = data.tip;
+        
+        // 能量分布图
+        const chartColors = ['#4facfe', '#f7971e', '#fa709a', '#6a11cb', '#f77062', '#434343', '#a8edea', '#8e2de2'];
+        let chartHtml = '';
+        let i = 0;
+        let total = answeredQuestions.length || 1;
+        for (const type in scores) {
+            const percentage = (scores[type] / total) * 100;
+            chartHtml += `
+                <div class="bar-item">
+                    <div class="bar-label">
+                        <span>${type}</span>
+                        <span>${scores[type]}分</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" style="width: 0%; background: ${chartColors[i]}"></div>
+                    </div>
+                </div>
+            `;
+            i++;
+        }
+        document.getElementById('energyChart').innerHTML = chartHtml;
+        
+        // 动画填充
+        setTimeout(() => {
+            const bars = document.querySelectorAll('.bar-fill');
+            i = 0;
+            for (const type in scores) {
+                const percentage = (scores[type] / total) * 100;
+                bars[i].style.width = `${percentage}%`;
+                i++;
+            }
+        }, 100);
+        
+        // 职业标签
+        const jobsHtml = data.jobs.map(job => `<span class="job-tag">${job}</span>`).join('');
+        document.getElementById('jobTags').innerHTML = jobsHtml;
+        
+        // 转发语
+        document.getElementById('shareQuote').textContent = `"${data.quote} 你也来试试？"`;
+        
+        // 转化内容
+        document.getElementById('convertTitle').textContent = data.convertTitle;
+        document.getElementById('convertDesc').textContent = data.convertDesc;
+        
+        // 更新弹窗内容
+        document.getElementById('hookType').textContent = `${data.emoji} ${mainType} × ${secondaryType}`;
+        
+        // 生成分享图片
+        setTimeout(() => {
+            generateShareImage();
+        }, 500);
+        
+        // 显示钩子弹窗
+        setTimeout(() => {
+            showHookModal();
+            startCountdown();
+        }, 500);
+    }
+
     // 重新测试
     function retryTest() {
         document.getElementById('resultPage').classList.add('hidden');
@@ -2098,16 +3285,85 @@
         if (countdownInterval) clearInterval(countdownInterval);
     }
 
+    // 当前分享模式
+    let currentShareMode = 'link';
+    // 上传的邀请图片
+    let uploadedInviteImage = null;
+
     function showInviteModal() {
         closeHookModal();
         document.getElementById('inviteModal').style.display = 'flex';
-        document.getElementById('inviteLink').value = window.location.href + '?ref=' + Date.now();
+        document.getElementById('inviteLink').value = window.location.href.split('?')[0] + '?ref=' + Date.now();
         document.getElementById('inviteNormalContent').classList.remove('hidden');
         document.getElementById('inviteSuccessContent').classList.add('hidden');
+        // 重置分享模式
+        switchShareMode('link');
     }
 
     function closeInviteModal() {
         document.getElementById('inviteModal').style.display = 'none';
+    }
+
+    function switchShareMode(mode) {
+        currentShareMode = mode;
+        const linkBtn = document.getElementById('linkShareBtn');
+        const imageBtn = document.getElementById('imageShareBtn');
+        const linkContent = document.getElementById('inviteLinkContent');
+        const imageContent = document.getElementById('inviteImageContent');
+        
+        if (mode === 'link') {
+            linkBtn.classList.add('active');
+            imageBtn.classList.remove('active');
+            linkContent.classList.remove('hidden');
+            imageContent.classList.remove('active');
+        } else {
+            linkBtn.classList.remove('active');
+            imageBtn.classList.add('active');
+            linkContent.classList.add('hidden');
+            imageContent.classList.add('active');
+        }
+    }
+
+    function handleInviteImageUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        
+        if (!file.type.startsWith('image/')) {
+            alert('请上传图片文件');
+            return;
+        }
+        
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            uploadedInviteImage = e.target.result;
+            const preview = document.getElementById('invitePreviewImage');
+            const placeholder = document.getElementById('inviteImagePlaceholder');
+            const imageBox = document.getElementById('inviteImageBox');
+            const actions = document.getElementById('inviteImageActions');
+            
+            preview.src = uploadedInviteImage;
+            preview.style.display = 'block';
+            placeholder.style.display = 'none';
+            imageBox.classList.add('has-image');
+            actions.style.display = 'flex';
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function removeInviteImage() {
+        uploadedInviteImage = null;
+        const preview = document.getElementById('invitePreviewImage');
+        const placeholder = document.getElementById('inviteImagePlaceholder');
+        const imageBox = document.getElementById('inviteImageBox');
+        const actions = document.getElementById('inviteImageActions');
+        const input = document.getElementById('inviteImageInput');
+        
+        preview.src = '';
+        preview.style.display = 'none';
+        placeholder.style.display = 'block';
+        imageBox.classList.remove('has-image');
+        actions.style.display = 'none';
+        input.value = '';
     }
 
     function copyInviteLink() {
@@ -2118,8 +3374,8 @@
     }
 
     function payNow() {
-        // 跳转到购买页面/微信小商店
-        alert('请到「丁老师」企微购买兑换码，付款后获得兑换码');
+        // 跳转到付费报告页面
+        window.location.href = '高级感能量报告.html';
     }
 
     // 兑换码验证
@@ -2186,6 +3442,226 @@
             document.getElementById('hookCountdown').textContent = 
                 `限时优惠：${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
         }, 1000);
+    }
+
+    // ============================================
+    // 生辰选择器逻辑
+    // ============================================
+    
+    // 时辰数据
+    const shichenData = [
+        { name: '子时', time: '23:00-01:00', start: 23 },
+        { name: '丑时', time: '01:00-03:00', start: 1 },
+        { name: '寅时', time: '03:00-05:00', start: 3 },
+        { name: '卯时', time: '05:00-07:00', start: 5 },
+        { name: '辰时', time: '07:00-09:00', start: 7 },
+        { name: '巳时', time: '09:00-11:00', start: 9 },
+        { name: '午时', time: '11:00-13:00', start: 11 },
+        { name: '未时', time: '13:00-15:00', start: 13 },
+        { name: '申时', time: '15:00-17:00', start: 15 },
+        { name: '酉时', time: '17:00-19:00', start: 17 },
+        { name: '戌时', time: '19:00-21:00', start: 19 },
+        { name: '亥时', time: '21:00-23:00', start: 21 }
+    ];
+    
+    // 当前选择状态
+    let birthYear = 1990;
+    let birthMonth = 1;
+    let birthDay = 1;
+    let birthShichen = '子时';
+    
+    // 显示生辰输入页
+    function showBirthPage() {
+        // 保存用户信息
+        userName = document.getElementById('userName').value.trim() || '用户';
+        userGender = document.querySelector('.gender-option.selected')?.dataset.gender || '';
+        
+        // 保存到sessionStorage
+        sessionStorage.setItem('userName', userName);
+        sessionStorage.setItem('userGender', userGender);
+        
+        // 如果有姓名，重新初始化通知
+        if (userName) {
+            initPayNotice();
+        }
+        
+        document.getElementById('coverPage').classList.add('hidden');
+        document.getElementById('birthPage').classList.add('show');
+        document.getElementById('birthPage').style.display = 'block';
+        initPickers();
+        initShichenGrid();
+    }
+    
+    // 初始化滚轮选择器
+    function initPickers() {
+        // 初始化年份（1950-2025）
+        const currentYear = new Date().getFullYear();
+        initPicker('year', currentYear - 75, currentYear, birthYear);
+        
+        // 初始化月份
+        initPicker('month', 1, 12, birthMonth);
+        
+        // 初始化日期
+        updateDayPicker();
+    }
+    
+    function initPicker(type, min, max, currentValue) {
+        const container = document.getElementById(type + 'Inner');
+        const wheel = document.getElementById(type + 'Wheel');
+        
+        // 创建选项
+        let items = [];
+        for (let i = min; i <= max; i++) {
+            items.push(i);
+        }
+        
+        // 渲染选项（每个选项显示3个位置的值，中间那个是active）
+        let html = '<div class="picker-item" style="height: 60px;"></div>'; // 顶部占位
+        for (let i = 0; i < items.length; i++) {
+            const val = items[i];
+            const isActive = val === currentValue;
+            html += `<div class="picker-item ${isActive ? 'active' : ''}" data-value="${val}" data-type="${type}">${val}</div>`;
+        }
+        html += '<div class="picker-item" style="height: 60px;"></div>'; // 底部占位
+        container.innerHTML = html;
+        
+        // 居中到当前值
+        const currentIndex = items.indexOf(currentValue);
+        if (currentIndex >= 0) {
+            container.style.transform = `translateY(-${currentIndex * 60}px)`;
+        }
+        
+        // 绑定点击事件
+        container.addEventListener('click', function(e) {
+            const item = e.target.closest('.picker-item');
+            if (!item) return;
+            
+            const value = parseInt(item.dataset.value);
+            const type = item.dataset.type;
+            
+            if (type === 'year') birthYear = value;
+            else if (type === 'month') {
+                birthMonth = value;
+                updateDayPicker();
+            }
+            else if (type === 'day') birthDay = value;
+            
+            // 更新active状态
+            container.querySelectorAll('.picker-item').forEach(el => el.classList.remove('active'));
+            item.classList.add('active');
+        });
+        
+        // 绑定滚轮事件
+        let startY = 0;
+        let currentTranslate = -((currentIndex >= 0 ? currentIndex : 0) * 60);
+        
+        wheel.addEventListener('touchstart', function(e) {
+            startY = e.touches[0].clientY;
+        });
+        
+        wheel.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+            const deltaY = e.touches[0].clientY - startY;
+            currentTranslate += deltaY;
+            startY = e.touches[0].clientY;
+            
+            // 限制范围
+            const maxTranslate = 0;
+            const minTranslate = -(items.length - 1) * 60;
+            currentTranslate = Math.max(minTranslate, Math.min(maxTranslate, currentTranslate));
+            
+            container.style.transform = `translateY(${currentTranslate}px)`;
+        });
+        
+        wheel.addEventListener('touchend', function(e) {
+            // 吸附到最近的选项
+            const index = Math.round(-currentTranslate / 60);
+            const clampedIndex = Math.max(0, Math.min(items.length - 1, index));
+            currentTranslate = -clampedIndex * 60;
+            
+            container.style.transform = `translateY(${currentTranslate}px)`;
+            
+            const value = items[clampedIndex];
+            if (type === 'year') birthYear = value;
+            else if (type === 'month') {
+                birthMonth = value;
+                updateDayPicker();
+            }
+            else if (type === 'day') birthDay = value;
+            
+            // 更新active
+            container.querySelectorAll('.picker-item').forEach(el => el.classList.remove('active'));
+            const targetItem = container.querySelector(`[data-value="${value}"]`);
+            if (targetItem) targetItem.classList.add('active');
+        });
+        
+        // 鼠标滚轮支持
+        wheel.addEventListener('wheel', function(e) {
+            e.preventDefault();
+            const direction = e.deltaY > 0 ? 1 : -1;
+            const currentIndex = Math.round(-currentTranslate / 60);
+            const newIndex = Math.max(0, Math.min(items.length - 1, currentIndex + direction));
+            currentTranslate = -newIndex * 60;
+            container.style.transform = `translateY(${currentTranslate}px)`;
+            
+            const value = items[newIndex];
+            if (type === 'year') birthYear = value;
+            else if (type === 'month') {
+                birthMonth = value;
+                updateDayPicker();
+            }
+            else if (type === 'day') birthDay = value;
+            
+            container.querySelectorAll('.picker-item').forEach(el => el.classList.remove('active'));
+            const targetItem = container.querySelector(`[data-value="${value}"]`);
+            if (targetItem) targetItem.classList.add('active');
+        });
+    }
+    
+    function updateDayPicker() {
+        // 根据年月计算天数
+        const daysInMonth = new Date(birthYear || 2000, birthMonth || 1, 0).getDate();
+        birthDay = Math.min(birthDay, daysInMonth);
+        initPicker('day', 1, daysInMonth, birthDay);
+    }
+    
+    // 初始化时辰网格
+    function initShichenGrid() {
+        const grid = document.getElementById('shichenGrid');
+        grid.innerHTML = shichenData.map(sc => `
+            <div class="shichen-item ${sc.name === birthShichen ? 'active' : ''}" data-shichen="${sc.name}" onclick="selectShichen('${sc.name}', this)">
+                <div class="shichen-name">${sc.name}</div>
+                <div class="shichen-time">${sc.time}</div>
+            </div>
+        `).join('');
+    }
+    
+    function selectShichen(name, element) {
+        birthShichen = name;
+        document.querySelectorAll('.shichen-item').forEach(el => el.classList.remove('active'));
+        element.classList.add('active');
+    }
+    
+    // 确认生辰，开始测试
+    function confirmBirth() {
+        // 保存生辰信息（可选，用于后续分析）
+        sessionStorage.setItem('birthInfo', JSON.stringify({
+            year: birthYear,
+            month: birthMonth,
+            day: birthDay,
+            shichen: birthShichen
+        }));
+        
+        // 隐藏生辰页，显示测试页
+        document.getElementById('birthPage').style.display = 'none';
+        document.getElementById('testPage').classList.remove('hidden');
+        
+        // 重置状态
+        scores = { 休门: 0, 生门: 0, 伤门: 0, 杜门: 0, 景门: 0, 死门: 0, 惊门: 0, 开门: 0 };
+        answeredQuestions = [];
+        usedQuestionIds.clear();
+        
+        showNextQuestion();
     }
     </script>
 </body>
