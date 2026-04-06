@@ -47,18 +47,90 @@
         .social-proof { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
         .social-proof span { color: #ffd700; }
         
-        /* 出生日期输入区 - 紧凑版 */
+        /* 用户信息输入区 */
+        .user-info-section {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,215,0,0.2);
+            border-radius: 16px;
+            padding: 20px 15px;
+            margin: 0 5px 15px;
+        }
+        .user-info-title {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .user-info-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        .user-info-group {
+            flex: 1;
+        }
+        .user-info-group label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            display: block;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+        .user-name-input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,215,0,0.3);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+        }
+        .user-name-input:focus {
+            outline: none;
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(255,215,0,0.3);
+        }
+        .user-name-input::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+        .gender-options {
+            display: flex;
+            gap: 10px;
+        }
+        .gender-option {
+            flex: 1;
+            padding: 12px 10px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,215,0,0.3);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .gender-option.selected {
+            background: rgba(255,215,0,0.2);
+            border-color: #ffd700;
+            box-shadow: 0 0 10px rgba(255,215,0,0.3);
+        }
+        
+        /* 出生日期输入区 - 滚动选择版 */
         .birth-section {
             background: rgba(255,255,255,0.05);
             border: 1px solid rgba(255,215,0,0.2);
-            border-radius: 12px;
-            padding: 15px 12px;
+            border-radius: 16px;
+            padding: 20px 15px;
             margin: 0 5px 15px;
         }
         .birth-title {
-            font-size: 12px;
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 12px;
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -66,81 +138,62 @@
         }
         .birth-inputs {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             justify-content: center;
             align-items: flex-end;
-            flex-wrap: nowrap;
         }
         .birth-input-group {
             text-align: center;
+            flex: 1;
         }
         .birth-input-group label {
-            font-size: 10px;
-            color: rgba(255,255,255,0.4);
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
-        .birth-input {
-            width: 55px;
-            padding: 8px 4px;
+        /* 滚动选择器样式 */
+        .birth-picker {
+            width: 100%;
+            height: 45px;
+            padding: 0 5px;
             background: rgba(255,255,255,0.1);
             border: 1px solid rgba(255,215,0,0.3);
-            border-radius: 8px;
+            border-radius: 10px;
             color: #fff;
-            font-size: 15px;
+            font-size: 16px;
             text-align: center;
-            font-family: 'Georgia', serif;
-            letter-spacing: 1px;
-        }
-        .birth-input:focus {
-            outline: none;
-            border-color: #ffd700;
-            box-shadow: 0 0 10px rgba(255,215,0,0.3);
-        }
-        .birth-input::placeholder {
-            color: rgba(255,255,255,0.3);
-            font-size: 12px;
-        }
-        .birth-separator {
-            font-size: 18px;
-            color: rgba(255,215,0,0.5);
-            align-self: center;
-            margin-bottom: 12px;
-        }
-        /* 时辰选择器 */
-        .birth-select {
-            width: 58px;
-            padding: 8px 4px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,215,0,0.3);
-            border-radius: 8px;
-            color: #fff;
-            font-size: 14px;
-            text-align: center;
-            font-family: 'Georgia', serif;
+            text-align-last: center;
             cursor: pointer;
             appearance: none;
             -webkit-appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,215,0,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffd700' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
-            background-position: right 4px center;
-            background-size: 12px;
-            padding-right: 20px;
+            background-position: right 8px center;
+            background-size: 14px;
         }
-        .birth-select:focus {
+        .birth-picker:focus {
             outline: none;
             border-color: #ffd700;
             box-shadow: 0 0 10px rgba(255,215,0,0.3);
         }
-        .birth-select option {
+        .birth-picker option {
             background: #1a1a2e;
             color: #fff;
-            font-family: 'Georgia', serif;
+            font-size: 14px;
+            padding: 8px;
+        }
+        .birth-separator {
+            font-size: 20px;
+            color: rgba(255,215,0,0.6);
+            align-self: center;
+            margin-bottom: 8px;
+            font-weight: bold;
         }
         .birth-hint {
-            font-size: 10px;
-            color: rgba(255,255,255,0.35);
-            margin-top: 10px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+            margin-top: 12px;
             text-align: center;
         }
         
@@ -351,41 +404,75 @@
         <div class="pain-item"><span class="pain-icon">💕</span><span class="pain-text">和谁最合拍？</span></div>
     </div>
     
+    <!-- 用户信息输入区 -->
+    <div class="user-info-section">
+        <div class="user-info-title">📝 请填写基本信息</div>
+        <div class="user-info-row">
+            <div class="user-info-group">
+                <label>你的名字</label>
+                <input type="text" class="user-name-input" id="userName" placeholder="请输入姓名" maxlength="10">
+            </div>
+        </div>
+        <div class="user-info-group">
+            <label>你的性别</label>
+            <div class="gender-options">
+                <div class="gender-option" data-gender="男" onclick="selectGender(this)">🙎‍♂️ 男</div>
+                <div class="gender-option" data-gender="女" onclick="selectGender(this)">🙍‍♀️ 女</div>
+            </div>
+        </div>
+    </div>
+    
     <!-- 出生日期输入区 -->
     <div class="birth-section">
-        <div class="birth-title">📜 请输入你的生辰信息</div>
+        <div class="birth-title">📜 请选择你的生辰信息</div>
         <div class="birth-inputs">
             <div class="birth-input-group">
                 <label>年</label>
-                <input type="text" class="birth-input" id="birthYear" maxlength="4" placeholder="YYYY" oninput="validateYear(this)">
+                <select class="birth-picker" id="birthYear"></select>
             </div>
             <span class="birth-separator">/</span>
             <div class="birth-input-group">
                 <label>月</label>
-                <input type="text" class="birth-input" id="birthMonth" maxlength="2" placeholder="MM" oninput="validateMonth(this)">
+                <select class="birth-picker" id="birthMonth">
+                    <option value="">选</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
             </div>
             <span class="birth-separator">/</span>
             <div class="birth-input-group">
                 <label>日</label>
-                <input type="text" class="birth-input" id="birthDay" maxlength="2" placeholder="DD" oninput="validateDay(this)">
+                <select class="birth-picker" id="birthDay">
+                    <option value="">选</option>
+                </select>
             </div>
             <span class="birth-separator">/</span>
             <div class="birth-input-group">
                 <label>时辰</label>
-                <select class="birth-select" id="birthHour" onchange="validateHour(this)">
-                    <option value="">请选</option>
-                    <option value="子">子时(23-1点)</option>
-                    <option value="丑">丑时(1-3点)</option>
-                    <option value="寅">寅时(3-5点)</option>
-                    <option value="卯">卯时(5-7点)</option>
-                    <option value="辰">辰时(7-9点)</option>
-                    <option value="巳">巳时(9-11点)</option>
-                    <option value="午">午时(11-13点)</option>
-                    <option value="未">未时(13-15点)</option>
-                    <option value="申">申时(15-17点)</option>
-                    <option value="酉">酉时(17-19点)</option>
-                    <option value="戌">戌时(19-21点)</option>
-                    <option value="亥">亥时(21-23点)</option>
+                <select class="birth-picker" id="birthHour">
+                    <option value="">选</option>
+                    <option value="子">子(23-1点)</option>
+                    <option value="丑">丑(1-3点)</option>
+                    <option value="寅">寅(3-5点)</option>
+                    <option value="卯">卯(5-7点)</option>
+                    <option value="辰">辰(7-9点)</option>
+                    <option value="巳">巳(9-11点)</option>
+                    <option value="午">午(11-13点)</option>
+                    <option value="未">未(13-15点)</option>
+                    <option value="申">申(15-17点)</option>
+                    <option value="酉">酉(17-19点)</option>
+                    <option value="戌">戌(19-21点)</option>
+                    <option value="亥">亥(21-23点)</option>
                 </select>
             </div>
         </div>
@@ -680,6 +767,45 @@ var energyData = {
 var currentQ = 0;
 var scores = {"休门":0,"生门":0,"伤门":0,"杜门":0,"景门":0,"死门":0,"惊门":0,"开门":0};
 var birthInfo = {};
+var userInfo = {name: "", gender: ""};
+
+// 页面加载时初始化年月日选择器
+document.addEventListener("DOMContentLoaded", function() {
+    initYearPicker();
+    initDayPicker();
+});
+
+// 初始化年份选择器（当前年份-80 到 当前年份-18）
+function initYearPicker() {
+    var yearSelect = document.getElementById("birthYear");
+    var currentYear = new Date().getFullYear();
+    for (var y = currentYear - 18; y >= currentYear - 80; y--) {
+        var option = document.createElement("option");
+        option.value = y;
+        option.textContent = y;
+        yearSelect.appendChild(option);
+    }
+}
+
+// 初始化日期选择器（1-31）
+function initDayPicker() {
+    var daySelect = document.getElementById("birthDay");
+    for (var d = 1; d <= 31; d++) {
+        var option = document.createElement("option");
+        option.value = d < 10 ? "0" + d : "" + d;
+        option.textContent = d < 10 ? "0" + d : d;
+        daySelect.appendChild(option);
+    }
+}
+
+// 性别选择
+function selectGender(el) {
+    document.querySelectorAll('.gender-option').forEach(function(opt) {
+        opt.classList.remove('selected');
+    });
+    el.classList.add('selected');
+    userInfo.gender = el.dataset.gender;
+}
 
 // 动态在线人数
 function updateLiveCount() {
@@ -691,93 +817,48 @@ function updateLiveCount() {
 updateLiveCount();
 setInterval(updateLiveCount, 5000); // 每5秒更新一次
 
-// 出生日期输入验证
-function validateYear(input) {
-    input.value = input.value.replace(/\D/g, '');
-    if (input.value.length === 4) {
-        var year = parseInt(input.value);
-        if (year >= 1900 && year <= new Date().getFullYear()) {
-            input.classList.remove('input-error');
-            input.classList.add('input-success');
-        } else {
-            input.classList.remove('input-success');
-            input.classList.add('input-error');
-        }
-    } else {
-        input.classList.remove('input-error', 'input-success');
-    }
-}
-
-function validateMonth(input) {
-    input.value = input.value.replace(/\D/g, '');
-    if (input.value.length === 2) {
-        var month = parseInt(input.value);
-        if (month >= 1 && month <= 12) {
-            input.classList.remove('input-error');
-            input.classList.add('input-success');
-        } else {
-            input.classList.remove('input-success');
-            input.classList.add('input-error');
-        }
-    } else {
-        input.classList.remove('input-error', 'input-success');
-    }
-}
-
-function validateDay(input) {
-    input.value = input.value.replace(/\D/g, '');
-    if (input.value.length === 2) {
-        var day = parseInt(input.value);
-        if (day >= 1 && day <= 31) {
-            input.classList.remove('input-error');
-            input.classList.add('input-success');
-        } else {
-            input.classList.remove('input-success');
-            input.classList.add('input-error');
-        }
-    } else {
-        input.classList.remove('input-error', 'input-success');
-    }
-}
-
-function validateHour(select) {
-    if (select.value) {
-        select.classList.remove('input-error');
-        select.classList.add('input-success');
-    } else {
-        select.classList.remove('input-success');
-    }
-}
-
-// 检查是否填写了日期
-function checkBirthInfo() {
+// 检查是否填写了所有信息
+function checkUserInfo() {
+    var name = document.getElementById("userName").value.trim();
+    var gender = userInfo.gender;
     var year = document.getElementById("birthYear").value;
     var month = document.getElementById("birthMonth").value;
     var day = document.getElementById("birthDay").value;
     var hour = document.getElementById("birthHour").value;
-    return year.length === 4 && month.length === 2 && day.length === 2 && hour !== "";
+    return name !== "" && gender !== "" && year !== "" && month !== "" && day !== "" && hour !== "";
 }
 
 // 开始测试
 document.getElementById("startBtn").onclick = function() {
-    if (!checkBirthInfo()) {
-        // 轻轻抖动输入框提示
-        var inputs = document.querySelectorAll('.birth-input');
-        inputs.forEach(function(input) {
-            if (!input.value || input.value.length < (input.id === "birthYear" ? 4 : 2)) {
-                input.classList.add('input-error');
-                setTimeout(function() { input.classList.remove('input-error'); }, 500);
+    if (!checkUserInfo()) {
+        // 检查姓名
+        var nameInput = document.getElementById("userName");
+        if (!nameInput.value.trim()) {
+            nameInput.classList.add('input-error');
+            setTimeout(function() { nameInput.classList.remove('input-error'); }, 500);
+        }
+        // 检查性别
+        if (!userInfo.gender) {
+            document.querySelectorAll('.gender-option').forEach(function(opt) {
+                opt.style.borderColor = "#ff6b6b";
+                setTimeout(function() { opt.style.borderColor = ""; }, 500);
+            });
+        }
+        // 检查年月日时
+        var pickers = ['birthYear', 'birthMonth', 'birthDay', 'birthHour'];
+        pickers.forEach(function(id) {
+            var el = document.getElementById(id);
+            if (!el.value) {
+                el.classList.add('input-error');
+                setTimeout(function() { el.classList.remove('input-error'); }, 500);
             }
         });
-        // 检查时辰
-        var hourSelect = document.getElementById("birthHour");
-        if (!hourSelect.value) {
-            hourSelect.classList.add('input-error');
-            setTimeout(function() { hourSelect.classList.remove('input-error'); }, 500);
-        }
-        alert("请完整填写生辰信息，开启你的能量之旅 ✨");
+        alert("请完整填写信息，开启你的能量之旅 ✨");
         return;
     }
+    
+    // 保存用户信息
+    userInfo.name = document.getElementById("userName").value.trim();
     
     // 保存出生信息
     birthInfo = {
@@ -1029,14 +1110,15 @@ document.getElementById("retryBtn").onclick = function() {
     currentQ = 0;
     scores = {"休门":0,"生门":0,"伤门":0,"杜门":0,"景门":0,"死门":0,"惊门":0,"开门":0};
     birthInfo = {};
+    userInfo = {name: "", gender: ""};
+    document.getElementById("userName").value = "";
+    document.querySelectorAll('.gender-option').forEach(function(opt) {
+        opt.classList.remove('selected');
+    });
     document.getElementById("birthYear").value = "";
     document.getElementById("birthMonth").value = "";
     document.getElementById("birthDay").value = "";
     document.getElementById("birthHour").value = "";
-    document.querySelectorAll('.birth-input').forEach(function(input) {
-        input.classList.remove('input-success', 'input-error');
-    });
-    document.getElementById("birthHour").classList.remove('input-success', 'input-error');
     document.getElementById("resultPage").classList.add("hidden");
     document.getElementById("coverPage").classList.remove("hidden");
     document.getElementById("progressFill").style.width = "0%";
